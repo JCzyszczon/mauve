@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @font-face {
+      font-family: Maghony;
+      src: url('fonts/Maghony.ttf') format("woff");
+    }
+  
+    @font-face {
+      font-family: Klein;
+      src: url('fonts/klein/Klein-Book.ttf') format("woff");
+    }
+  
+    @font-face {
+      font-family: TheSeasons;
+      src: url('fonts/TheSeasons/TheSeasonsLight.ttf') format("woff");
+    }
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #fff !important;
+}
+
+.swiper-slide {
+  min-height: 376px !important;
+}
