@@ -46,7 +46,7 @@ export default function News() {
                 <section className='md:w-1/2 w-full h-auto flex flex-col justify-center items-center pt-5 pb-10'>
                     <h2 className='lg:text-2xl xs:text-xl text-lg font-klein text-center xl:px-10 px-2'>{item.tytul}</h2>
                     {item.podtytul && <h3 className='text-center font-theSeasons lg:text-lg md:text-base text-sm mt-1'>{item.podtytul}</h3>}
-                    <div className='flex flex-col justify-center items-center text-center lg:gap-3 md:gap-1 gap-2 font-theSeasons lg:text-base sm:text-sm text-xs lg:mt-8 mt-4 w-full md:px-6 px-2'>
+                    <div className='flex flex-col justify-center items-center text-center lg:gap-3 md:gap-1 gap-2 font-theSeasons lg:text-base sm:text-sm text-sm lg:mt-8 mt-4 w-full md:px-6 px-2'>
                     {item.paragrafy.map((paragraf, i) => (
                         <p key={i}>{replaceLinksInText(paragraf.tekst, paragraf.linki)}</p>
                     ))}

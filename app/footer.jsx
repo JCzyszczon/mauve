@@ -12,7 +12,7 @@ export default function Footer() {
         <section className='w-full h-auto flex flex-col justify-center items-center md:gap-5 gap-4'>
             <h2 className='uppercase lg:text-2xl xs:text-xl text-lg font-theSeasons text-center font-[500]'>Bądźmy w kontakcie!</h2>
             <span className='md:w-[150px] w-[100px] h-[1px] bg-[#000]'></span>
-            <p className='font-theSeasons lg:text-base sm:text-sm text-xs text-center'>Zostaw swój adres email, a będę na bieżąco<br/>informować Cię o nowościach w ofercie i promocjach.</p>
+            <p className='font-theSeasons lg:text-base sm:text-sm text-sm text-center'>Zostaw swój adres email, a będę na bieżąco<br/>informować Cię o nowościach w ofercie i promocjach.</p>
             <form action="" className='w-full flex flex-col justify-center items-center text-center md:gap-5 gap-4'>
                 <input type="email" name="email" id="email" placeholder='Podaj swój e-mail' className='bg-mainBackground text-[#000] placeholder:text-[#555] placeholder:uppercase bg-no-repeat bg-cover text-center sm:text-base text-xs border-2 border-[#cdbebf] outline-none focus:border-[#ab9c9d] duration-200 placeholder:tracking-[0.2em] tracking-widest px-4 py-2 lg:w-2/5 md:w-3/5 w-full font-klein'/>
                 <input type="submit" value="zapisz się" className='uppercase tracking-widest bg-[#cdbebf] text-[#fff] hover:scale-105 duration-200 sm:text-base text-xs px-5 py-2 font-medium cursor-pointer font-klein'/>

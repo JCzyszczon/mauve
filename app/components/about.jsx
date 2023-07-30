@@ -46,7 +46,7 @@ export default function About() {
     <section className='w-full h-auto flex md:flex-row flex-col justify-center items-center bg-mainBackground bg-no-repeat bg-cover mb-16 drop-shadow-md xl:px-[10%] px-0'>
       <section className='md:w-1/2 w-full min-h-full flex flex-col justify-center items-center gap-5 md:py-0 py-5'>
         <Image src={MauveLogo} alt='Mauve Logo' className='w-[180px] h-auto'/>
-        <div className='w-full h-auto flex flex-col justify-center items-center md:gap-4 gap-3 xl:text-base sm:text-sm text-xs text-start font-theSeasons md:px-10 px-3'>
+        <div className='w-full h-auto flex flex-col justify-center items-center md:gap-4 gap-3 xl:text-base sm:text-sm text-sm text-start font-theSeasons md:px-10 px-3'>
           <div className='w-full'>
             <p>Nazywam się Dagmara  Misiewicz.</p>
             <p>Jestem wizażystką wykonującą makijaże na szczególne okazje, czym pasjonuję się od 2016 r.</p>
