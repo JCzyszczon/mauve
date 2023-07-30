@@ -10,7 +10,7 @@ export default function Footer() {
             <a href="https://www.instagram.com/mauve.pl/" target='_blank'><AiOutlineInstagram className='sm:text-4xl text-3xl text-[#705555] hover:text-[#604444] duration-200'/></a>
         </span>
         <section className='w-full h-auto flex flex-col justify-center items-center md:gap-5 gap-4'>
-            <h2 className='uppercase lg:text-2xl xs:text-xl text-lg font-theSeasons text-center font-[500]'>Bądźmy w kontakcie!</h2>
+            <h2 className='uppercase lg:text-2xl xs:text-xl text-lg font-theSeasons text-center font-bold'>Bądźmy w kontakcie!</h2>
             <span className='md:w-[150px] w-[100px] h-[1px] bg-[#000]'></span>
             <p className='font-theSeasons lg:text-base sm:text-sm text-sm text-center'>Zostaw swój adres email, a będę na bieżąco<br/>informować Cię o nowościach w ofercie i promocjach.</p>
             <form action="" className='w-full flex flex-col justify-center items-center text-center md:gap-5 gap-4'>
