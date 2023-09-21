@@ -1,0 +1,175 @@
+import { Button } from '@react-email/button';
+import {
+  Body,
+  Container,
+  Column,
+  Head,
+  Html,
+  Img,
+  Link,
+  Preview,
+  Row,
+  Section,
+  Text,
+} from '@react-email/components';
+import * as React from 'react';
+
+export const WelcomeEmail = () => {
+  return (
+    <Html>
+      <Head />
+      <Preview>You updated the password for your Twitch account</Preview>
+      <Body style={main}>
+        <Container style={container}>
+          <Section style={logo}>
+            <Img width={130} src={'https://ayzihwizltrjtshahwlj.supabase.co/storage/v1/object/public/basic/mauve-logo-removebg-preview.png'} />
+          </Section>
+          <Section style={sectionsBorders}>
+            <Row>
+              <Column style={sectionBorder} />
+              <Column style={sectionCenter} />
+              <Column style={sectionBorder} />
+            </Row>
+          </Section>
+          <Section style={content}>
+            <Text style={h1}>Witaj,</Text>
+            <Text style={paragraph}>
+            There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.
+            </Text>
+            <Text style={paragraph}>
+            All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary.
+            </Text>
+            <Text style={paragraph}>
+            It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures. Żeby zapoznać się z regulaminem {' '}
+              <Link href="https://mauve.pl/regulamin" style={link}>
+                kliknij tutaj
+              </Link>
+              .
+            </Text>
+            <Section style={sectionStyle}>
+              <Button href='https://www.facebook.com/mauvebeautypl/?locale=pl_PL' style={buttonStyle}><Text style={paragraph2}>Umów się</Text></Button>
+            </Section>
+            <Text style={paragraph}>
+              Masz jakieś pytania? Skontaktuj się na {' '}
+              <Link href="https://www.facebook.com/mauvebeautypl/?locale=pl_PL" style={link}>
+                Facebooku
+              </Link>
+              .
+            </Text>
+            <Text style={paragraph}>
+              Do zobaczenia,
+              <br />
+              Mauve
+            </Text>
+          </Section>
+        </Container>
+
+        <Section style={footer}>
+          <Row>
+            <Column align="right" style={{ width: '50%', paddingRight: '8px' }}>
+              <Link href='https://www.instagram.com/mauve.pl/'>
+                <Img width={22} src={`https://ayzihwizltrjtshahwlj.supabase.co/storage/v1/object/public/basic/1384031.png`} />
+              </Link>
+            </Column>
+            <Column align="left" style={{ width: '50%', paddingLeft: '8px' }}>
+              <Link href='https://www.facebook.com/mauvebeautypl/?locale=pl_PL'>
+                <Img width={22} src={`https://ayzihwizltrjtshahwlj.supabase.co/storage/v1/object/public/basic/59439.png`} />
+              </Link>
+            </Column>
+          </Row>
+          <Text style={{ textAlign: 'center', color: '#706a7b' }}>
+            © 2023 Mauve - wszelkie prawa zastrzeżone
+          </Text>
+        </Section>
+      </Body>
+    </Html>
+  );
+};
+
+export default WelcomeEmail;
+
+const fontFamily = 'HelveticaNeue,Helvetica,Arial,sans-serif';
+
+const main = {
+  backgroundColor: '#efeef1',
+  fontFamily,
+};
+
+const paragraph = {
+  lineHeight: 1.5,
+  fontSize: 14,
+};
+
+const paragraph2 = {
+  lineHeight: 1,
+  fontSize: 14,
+};
+
+const buttonStyle = {
+  backgroundColor: '#cdbebf',
+  width: '180px',
+  height: '45px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'start',
+  color: '#fff',
+  textTransform: 'uppercase',
+  letterSpacing: '2px'
+}
+
+const sectionStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  textAlign: 'center',
+  padding: '30px 0px',
+}
+
+const h1 = {
+  fontWeight: 600,
+  fontSize: 15,
+  lineHeight: 2,
+}
+
+const container = {
+  width: '580px',
+  margin: '30px auto',
+  backgroundColor: '#ffffff',
+};
+
+const footer = {
+  width: '580px',
+  margin: '0 auto',
+};
+
+const content = {
+  padding: '5px 50px 10px 60px',
+};
+
+const logo = {
+  display: 'flex',
+  justifyContent: 'center',
+  alingItems: 'center',
+  padding: 30,
+  //backgroundImage: 'url("https://ayzihwizltrjtshahwlj.supabase.co/storage/v1/object/public/basic/background.png")'
+};
+
+const sectionsBorders = {
+  width: '100%',
+  display: 'flex',
+};
+
+const sectionBorder = {
+  borderBottom: '1px solid rgb(238,238,238)',
+  width: '249px',
+};
+
+const sectionCenter = {
+  borderBottom: '1px solid #705555',
+  width: '102px',
+};
+
+const link = {
+  textDecoration: 'underline',
+  color: '#705555',
+};

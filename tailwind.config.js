@@ -8,9 +8,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'maghony': ['Maghony'],
+        'maghony': ['Maghony2'],
         'klein': ['Klein'],
         'theSeasons': ['TheSeasons'],
+        'theSeasons2': ['TheSeasons2'],
       },
       backgroundImage: {
         'mainBackground': "url('img/background.png')",
