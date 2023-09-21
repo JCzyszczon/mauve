@@ -24,7 +24,7 @@ export const metadata = {
     title: 'Mauve 2',
     description: 'The React Framework for the Web',
     url: 'https://mauve.pl/',
-    siteName: 'Mauve',
+    siteName: 'Mauve 2',
     images: [
       {
         url: '/mauve_mobile.png',
