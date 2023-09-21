@@ -21,7 +21,7 @@ export const metadata = {
     canonical: 'https://mauve.pl',
   },
   openGraph: {
-    title: 'Profesjonalny makijaż na wyjątkowe okazje',
+    title: 'Profesjonalny makijaż na wyjątkowe okazje | Mauve.pl',
     description: 'Odwiedź nas już dziś w Krakowie!',
     url: 'https://mauve.pl/',
     siteName: 'Mauve',
@@ -35,7 +35,7 @@ export const metadata = {
         url: '/mauve.png',
         width: 1800,
         height: 1600,
-        alt: 'My custom alt',
+        alt: 'Mauve Image',
       },
     ],
     locale: 'en_US',
