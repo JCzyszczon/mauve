@@ -22,7 +22,7 @@ export const metadata = {
   },
   openGraph: {
     title: 'Mauve 2',
-    description: 'The React Framework for the Web',
+    description: 'JAKIŚ OPIS',
     url: 'https://mauve.pl/',
     siteName: 'Mauve 2',
     images: [
