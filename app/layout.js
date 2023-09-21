@@ -21,7 +21,7 @@ export const metadata = {
     canonical: 'https://mauve.pl',
   },
   openGraph: {
-    title: 'Mauve ',
+    title: 'Mauve 2',
     description: 'The React Framework for the Web',
     url: 'https://mauve.pl/',
     siteName: 'Mauve',
