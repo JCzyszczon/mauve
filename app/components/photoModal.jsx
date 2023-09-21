@@ -61,14 +61,14 @@ function PhotoModal({ closeModal, props, photoId, openIndex, basicState }) {
           <Swiper ref={modalRef} initialSlide={openIndex} loop={true} spaceBetween={10} modules={[FreeMode, Navigation, Thumbs]} className="mySwiperPhoto !w-full !flex !justify-center !items-center">
           {props.map((zdjecie, index) => (
             <SwiperSlide key={zdjecie.zdj} className='modalSlidePhoto !w-full !h-screen !flex !justify-center !items-center cursor-grab !py-10'>
-                <Image src={supabaseImport(`${photoId}/${zdjecie.zdj}`)} width={1200} height={800} alt={index} className='w-auto h-full !object-contain'/>
+                <Image src={supabaseImport(`${photoId}/${zdjecie.zdj}`)} width={1200} height={800} quality={100} alt={index} className='w-auto h-full !object-contain'/>
             </SwiperSlide>
           ))}
           </Swiper>
         ) : (
           <Swiper ref={modalRef} loop={true} spaceBetween={10} modules={[FreeMode, Navigation, Thumbs]} className="mySwiperPhoto">
             <SwiperSlide className='modalSlidePhoto cursor-grab'>
-              <Image ref={modalRef} src={props} alt='Offer Photo' placeholder='blur' loading='lazy' className='w-auto h-auto'/>
+              <Image ref={modalRef} src={props} alt='Offer Photo' quality={100} placeholder='blur' loading='lazy' className='w-auto h-auto'/>
             </SwiperSlide>
           </Swiper>
         )} 

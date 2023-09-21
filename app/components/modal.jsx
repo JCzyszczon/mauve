@@ -15,6 +15,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import AnimatedText2 from './animatedText2';
 import supabase from '../config/supabaseClient.js';
 
+
 const supabaseImport = (image) => {
   const imageUrl = supabase.storage.from('oferta').getPublicUrl(image);
   
@@ -35,6 +36,16 @@ function Modal({ closeModal, props }) {
   const [currentOffset, setCurrentOffset] = useState(0);
   const [isBasic, setIsBasic] = useState();
   const [photoId, setPhotoId] = useState();
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageLoaded2, setImageLoaded2] = useState(false);
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+
+  const handleImageLoad2 = () => {
+    setImageLoaded2(true);
+  };
 
   useEffect(() => {
     function handleResize() {
@@ -172,15 +183,31 @@ function Modal({ closeModal, props }) {
           <>
           <Swiper loop={true} spaceBetween={10} thumbs={{ swiper: thumbsSwiper }} modules={[FreeMode, Navigation, Thumbs]} className="!w-full !flex !justify-center !items-center bg-gray-100 cursor-pointer !rounded-lg !overflow-hidden">
           {props.zdjecia.map((zdjecie, index) => (
-            <SwiperSlide onClick={() => getSlide(props.zdjecia, props.id, index, false)} key={'Główne' + index} className='!w-full !flex !justify-center !items-center sm:!h-auto !h-[350px]'>
-              <Image src={supabaseImport(`${props.id}/${zdjecie.zdj}`)} width={730} height={490} quality={100} alt={index} className='h-full w-auto cursor-pointer 2xl:object-cover sm:object-contain object-cover'/>
+            <SwiperSlide onClick={() => getSlide(props.zdjecia, props.id, index, false)} key={'Główne' + index} className='!w-full !flex !relative !justify-center !items-center sm:!h-full !h-[350px]'>
+              <Image src={supabaseImport(`${props.id}/${zdjecie.zdj}`)} width={730} height={490} quality={100} alt={index} onLoadingComplete={handleImageLoad} className='h-full w-auto cursor-pointer 2xl:object-cover sm:object-contain object-cover'/>
+              {!imageLoaded &&
+                <div className='w-full h-full flex justify-center items-center absolute left-0 top-0 bg-gray-100'>
+                  <svg className="mr-3 h-6 w-6 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                </div>
+              }
             </SwiperSlide>
           ))}
           </Swiper>
           <Swiper onSwiper={setThumbsSwiper} loop={true} spaceBetween={10} slidesPerView={4} freeMode={true} watchSlidesProgress={true} modules={[FreeMode, Navigation, Thumbs]} className="mySwiper3 !w-full !flex !justify-center !items-center bg-gray-100 !rounded-lg sm:!max-h-[150px] sm:!h-auto !max-h-none !h-[100px]">
           {props.zdjecia.map((zdjecie, index) => (
-              <SwiperSlide key={index} className='modalSlide2 !bg-gray-200 !cursor-pointer !flex !justify-center !items-center overflow-hidden'>
-                <Image src={supabaseImport(`${props.id}/${zdjecie.zdj}`)} width={730} height={490} alt={'Zdjęcie' + index} className='w-auto h-full sm:object-cover object-cover'/>
+              <SwiperSlide key={index} className='modalSlide2 !bg-gray-200 !cursor-pointer !flex !justify-center !relative !items-center overflow-hidden'>
+                <Image src={supabaseImport(`${props.id}/${zdjecie.zdj}`)} width={730} height={490} alt={'Zdjęcie' + index} onLoadingComplete={handleImageLoad2} className='w-auto h-full sm:object-cover object-cover'/>
+                {!imageLoaded2 &&
+                <div className='w-full h-full flex justify-center items-center absolute left-0 top-0 bg-gray-100'>
+                  <svg className="mr-3 h-6 w-6 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                </div>
+                }
               </SwiperSlide>
           ))}
           </Swiper>
