@@ -21,10 +21,10 @@ export const metadata = {
     canonical: 'https://mauve.pl',
   },
   openGraph: {
-    title: 'Mauve 2',
+    title: 'Mauve - Profesjonalny makijaż na wyjątkowe okazje',
     description: 'JAKIŚ OPIS',
     url: 'https://mauve.pl/',
-    siteName: 'Mauve 2',
+    siteName: 'Mauve',
     images: [
       {
         url: '/mauve_mobile.png',
