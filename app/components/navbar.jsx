@@ -113,9 +113,9 @@ export default function Navbar() {
                 {!nav ? <BiMenu className='lg:hidden flex text-2xl text-[#000]' onClick={handleClick}/> : <IoMdClose className='lg:hidden flex text-2xl text-[#000]' onClick={handleClick}/>}
               </div>
               <motion.ul variants={container} initial='hidden' whileInView='show' viewport={{ once: true, amount: 0.5 }} className='w-full flex flex-col justify-center items-center uppercase tracking-widest text-base font-normal font-klein gap-3 py-10'>
-                <motion.li variants={item} onClick={handleClick} className='hover:text-[#705555] duration-200 cursor-pointer'><ScrollLink to='offer' smooth={true} duration={400} offset={-40}>Oferta</ScrollLink></motion.li>
-                <motion.li variants={item} onClick={handleClick} className='hover:text-[#705555] duration-200 cursor-pointer'><a href='https://www.instagram.com/mauve.pl/' target='_blank'>Portfolio</a></motion.li>
-                <motion.li variants={item} onClick={handleClick} className='hover:text-[#705555] duration-200 cursor-pointer'><ScrollLink to='about' smooth={true} duration={400} offset={-40}>O mnie</ScrollLink></motion.li>
+                <motion.li variants={item} className='hover:text-[#705555] duration-200 cursor-pointer'><ScrollLink to='offer' onClick={() => setNav(false)} smooth={true} duration={400} offset={-40}>Oferta</ScrollLink></motion.li>
+                <motion.li variants={item} className='hover:text-[#705555] duration-200 cursor-pointer'><a href='https://www.instagram.com/mauve.pl/' onClick={() => setNav(false)} target='_blank'>Portfolio</a></motion.li>
+                <motion.li variants={item} className='hover:text-[#705555] duration-200 cursor-pointer'><ScrollLink to='about' onClick={() => setNav(false)} smooth={true} duration={400} offset={-40}>O mnie</ScrollLink></motion.li>
               </motion.ul>
             </motion.section>
           }

@@ -21,18 +21,18 @@ export const metadata = {
     canonical: 'https://mauve.pl',
   },
   openGraph: {
-    title: 'Mauve',
+    title: 'Mauve ',
     description: 'The React Framework for the Web',
     url: 'https://mauve.pl/',
     siteName: 'Mauve',
     images: [
       {
-        url: 'https://nextjs.org/og.png',
+        url: '/mauve_mobile.png',
         width: 800,
         height: 600,
       },
       {
-        url: 'https://nextjs.org/og-alt.png',
+        url: '/mauve_mobile.png',
         width: 1800,
         height: 1600,
         alt: 'My custom alt',
