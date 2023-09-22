@@ -105,7 +105,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ## Author
 
--   Jczyszczon [link](https://jczyszczon.pl)
+-   Jczyszczon - [link](https://jczyszczon.pl)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
