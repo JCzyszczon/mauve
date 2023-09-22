@@ -13,7 +13,9 @@
 
 -   [Overview](#overview)
     -   [Description](#the-challenge)
-    -   [Screenshots](#screenshots)
+    -   [Screenshots - Landing Page](#screenshots-landing)
+    -   [Screenshots - Offer](#screenshots-offer)
+    -   [Screenshots - Admin](#screenshots-admin)
     -   [Links](#links)
 -   [My process](#my-process)
     -   [Built with](#built-with)
@@ -30,7 +32,44 @@ Mauve is a project created for a company from the Beauty industry.
 
 In addition to presenting the company's offer in a stylish and simple design, the application also has an administrator panel in which the manager can freely edit the displayed content in cooperation with supabase.
 
-### Screenshots
+### Screenshots - Landing Page
+
+<table>
+    <tr>
+        <td>
+            <img src="./app/img/mauve-zrzut1.png" alt="Desktop solution" width="100%" title="Desktop solution"/>
+        </td>
+        <td>
+            <img src="./app/img/mauve-zrzut1-mobile.png" alt="Mobile solution" title="Mobile solution" width="100%" />
+        </td>
+    </tr>
+</table>
+
+### Screenshots - Offer
+
+<table>
+    <tr>
+        <td>
+            <img src="./app/img/mauve-zrzut2.png" alt="Desktop solution" width="100%" title="Desktop solution"/>
+        </td>
+        <td>
+            <img src="./app/img/mauve-zrzut2-mobile.png" alt="Mobile solution" title="Mobile solution" width="100%" />
+        </td>
+    </tr>
+</table>
+
+### Screenshots - Admin
+
+<table>
+    <tr>
+        <td>
+            <img src="./app/img/mauve-zrzut3.png" alt="Desktop solution" width="100%" title="Desktop solution"/>
+        </td>
+        <td>
+            <img src="./app/img/mauve-zrzut3-mobile.png" alt="Mobile solution" title="Mobile solution" width="100%" />
+        </td>
+    </tr>
+</table>
 
 ### Links
 
