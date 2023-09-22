@@ -33,6 +33,14 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
+![Banner Mauve](/app/img/mauve-banner.png)
+
 # Mauve Project
 
-![Banner Mauve](/app/img/mauve-banner.png)
+## Description
+
+Mauve is a project created for a company from the Beauty industry.
+
+In addition to presenting the company's offer in a stylish and simple design, the application also has an administrator panel in which the manager can freely edit the displayed content in cooperation with supabase.
+
+
