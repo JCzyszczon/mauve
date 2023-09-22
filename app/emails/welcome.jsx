@@ -106,6 +106,7 @@ const paragraph = {
 const paragraph2 = {
   lineHeight: 1,
   fontSize: 14,
+  padding: '0px 5px',
 };
 
 const buttonStyle = {
