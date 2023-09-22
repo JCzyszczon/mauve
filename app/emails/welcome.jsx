@@ -109,7 +109,7 @@ const paragraph2 = {
 
 const buttonStyle = {
   backgroundColor: '#cdbebf',
-  width: '180px',
+  width: '100%',
   height: '45px',
   display: 'flex',
   justifyContent: 'center',
