@@ -126,7 +126,7 @@ const sectionStyle = {
   alignItems: 'center',
   textAlign: 'center',
   padding: '30px 0px',
-  margin: '0px auto',
+  width: '100%',
 }
 
 const h1 = {
