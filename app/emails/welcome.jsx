@@ -18,11 +18,11 @@ export const WelcomeEmail = () => {
   return (
     <Html>
       <Head />
-      <Preview>You updated the password for your Twitch account</Preview>
+      <Preview>dziękuję za dołączenie!</Preview>
       <Body style={main}>
         <Container style={container}>
           <Section style={logo}>
-            <Img width={130} src={'https://ayzihwizltrjtshahwlj.supabase.co/storage/v1/object/public/basic/mauve-logo-removebg-preview.png'} />
+            <Img style={image} width={130} src={'https://ayzihwizltrjtshahwlj.supabase.co/storage/v1/object/public/basic/mauve-logo-removebg-preview.png'} />
           </Section>
           <Section style={sectionsBorders}>
             <Row>
@@ -93,6 +93,8 @@ const fontFamily = 'HelveticaNeue,Helvetica,Arial,sans-serif';
 const main = {
   backgroundColor: '#efeef1',
   fontFamily,
+  padding: '30px 0px',
+  borderRadius: '6px',
 };
 
 const paragraph = {
@@ -114,7 +116,8 @@ const buttonStyle = {
   alignItems: 'start',
   color: '#fff',
   textTransform: 'uppercase',
-  letterSpacing: '2px'
+  letterSpacing: '2px',
+  margin: '0px auto',
 }
 
 const sectionStyle = {
@@ -123,6 +126,7 @@ const sectionStyle = {
   alignItems: 'center',
   textAlign: 'center',
   padding: '30px 0px',
+  margin: '0px auto',
 }
 
 const h1 = {
@@ -132,13 +136,13 @@ const h1 = {
 }
 
 const container = {
-  width: '580px',
+  width: '620px',
   margin: '30px auto',
   backgroundColor: '#ffffff',
 };
 
 const footer = {
-  width: '580px',
+  width: '620px',
   margin: '0 auto',
 };
 
@@ -147,12 +151,13 @@ const content = {
 };
 
 const logo = {
-  display: 'flex',
-  justifyContent: 'center',
-  alingItems: 'center',
+  width: '100%',
   padding: 30,
-  //backgroundImage: 'url("https://ayzihwizltrjtshahwlj.supabase.co/storage/v1/object/public/basic/background.png")'
 };
+
+const image = {
+  margin: '0px auto',
+}
 
 const sectionsBorders = {
   width: '100%',
