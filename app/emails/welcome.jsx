@@ -22,7 +22,7 @@ export const WelcomeEmail = () => {
       <Body style={main}>
         <Container style={container}>
           <Section style={logo}>
-            <Img style={image} width={130} src={'https://ayzihwizltrjtshahwlj.supabase.co/storage/v1/object/public/basic/mauve-logo-removebg-preview.png'} />
+            <Img style={image} width={130} src={'https://ayzihwizltrjtshahwlj.supabase.co/storage/v1/object/public/basic/mauve_logo_transparent.png'} />
           </Section>
           <Section style={sectionsBorders}>
             <Row>
