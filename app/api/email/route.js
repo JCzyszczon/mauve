@@ -8,14 +8,12 @@ export async function POST(req) {
 
     const { userEmail } = await req.json();
 
-    /*await resend.sendEmail({
-        from: "myemail@gmail.com",
+    await resend.sendEmail({
+        from: "dagmara@mauve.pl",
         to: userEmail,
         subject: "Newsletter Mauve",
         react: WelcomeEmail(),
-    });*/
-
-    console.log(userEmail);
+    });
 
     return NextResponse.json({
         status: 'Ok',
