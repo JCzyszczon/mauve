@@ -110,23 +110,18 @@ const paragraph2 = {
 const buttonStyle = {
   backgroundColor: '#cdbebf',
   width: '100%',
-  height: '45px',
+  color: '#fff',
   display: 'flex',
   justifyContent: 'center',
-  alignItems: 'start',
-  color: '#fff',
+  alignItems: 'center',
   textTransform: 'uppercase',
   letterSpacing: '2px',
   margin: '0px auto',
 }
 
 const sectionStyle = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
+  padding: '30px 50px',
   textAlign: 'center',
-  padding: '30px 0px',
-  width: '100%',
 }
 
 const h1 = {
