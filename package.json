@@ -2,6 +2,7 @@
   "name": "mauve-beauty-2",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://mauve.pl",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
