@@ -92,6 +92,7 @@ const fontFamily = 'HelveticaNeue,Helvetica,Arial,sans-serif';
 
 const main = {
   backgroundColor: '#efeef1',
+  color: "#000",
   fontFamily,
   padding: '30px 0px',
   borderRadius: '6px',
@@ -120,7 +121,7 @@ const buttonStyle = {
 }
 
 const sectionStyle = {
-  padding: '30px 50px',
+  padding: '30px 10%',
   textAlign: 'center',
 }
 
@@ -142,7 +143,7 @@ const footer = {
 };
 
 const content = {
-  padding: '5px 50px 10px 60px',
+  padding: '5px 10% 10px 10%',
 };
 
 const logo = {
