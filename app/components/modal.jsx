@@ -179,7 +179,7 @@ function Modal({ closeModal, props }) {
       <motion.section variants={swiperItem} initial='hidden' whileInView='show' exit='exit' viewport={{ once: false, amount: 0.5 }} ref={modalRef} className='lg:w-[90%] sm:w-[95%] w-[100%] flex sm:flex-row flex-col bg-[#fff] 2xl:min-h-[700px] min-h-0 2xl:max-h-[700px] max-h-none relative rounded-md overflow-hidden'>
         <button onClick={handleClose} className='absolute right-2 top-2 z-[100]'><IoMdClose className='text-3xl text-[#705555] hover:text-[#604444]'/></button>
         <motion.section variants={cardVariants} initial='offscreen' whileInView='onscreen' viewport={{ once: true, amount: 0.5 }} className='sm:w-1/2 w-full flex flex-col justify-center items-center p-2 gap-2'>
-        {props.zdjecia ? (
+        {props.zdjecia.length >= 1 ? (
           <>
           <Swiper loop={true} spaceBetween={10} thumbs={{ swiper: thumbsSwiper }} modules={[FreeMode, Navigation, Thumbs]} className="!w-full !flex !justify-center !items-center bg-gray-100 cursor-pointer !rounded-lg !overflow-hidden">
           {props.zdjecia.map((zdjecie, index) => (
