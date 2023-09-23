@@ -12,7 +12,6 @@ import DeleteModal from "../../../components/deleteModal";
 export default function Home() {
 
   const [newsletterData, setNewsletterData] = useState();
-  const [loading, setLoading] = useState(false);
   const [messageTimer, setMessageTimer] = useState(null);
   const [message, setMessage] = useState('');
   const [modalState, setModalState] = useState(false);

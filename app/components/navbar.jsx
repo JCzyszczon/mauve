@@ -11,14 +11,12 @@ import Link from 'next/link';
 import sharedImage from './sharedImage';
 import { motion, AnimatePresence } from "framer-motion";
 import AnimatedText from './animatedText';
-import { useRouter } from 'next/navigation';
 import MauveLogo from '../img/mauve_logo_nav.png';
 
 export default function Navbar() {
 
   const [nav, setNav] = useState(false);
   const handleClick = () => setNav(!nav);
-  const router = useRouter();
   const [navPic, setNavPic] = useState(NavImg);
 
   const container = {

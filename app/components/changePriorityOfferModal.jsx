@@ -4,7 +4,7 @@ import Image from 'next/image';
 import MauveLogo from '../img/mauve_logo_transparent.png';
 import { IoMdClose } from 'react-icons/io';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 import supabase from '../config/supabaseClient';
 
 function ChangePriorityOfferModal({ closeModal, props, tableN }) {

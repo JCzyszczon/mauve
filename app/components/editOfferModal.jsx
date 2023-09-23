@@ -18,11 +18,9 @@ function EditOfferModal({ closeModal, props, tableN }) {
   const [title, setTitle] = useState(props.tytul);
   const [price, setPrice] = useState(props.cena);
   const [time, setTime] = useState(props.czas);
-  const [picture, setPicture] = useState('');
   const [modalState, setModalState] = useState(false);
   const [failure, setFailure] = useState();
   const [selectedFiles, setSelectedFiles] = useState(null);
-  const [uploadedImages, setUploadedImages] = useState([]);
   const [picLoad, setPicLoad] = useState(false);
   const [filesCount, setFilesCount] = useState();
 

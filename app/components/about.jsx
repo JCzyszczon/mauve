@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import MauveLogo from '../img/mauve_logo_transparent.png';
 import React, { useState, useEffect } from "react";
-import { delay, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import sharedImage from './sharedImage';
 import supabase from '../config/supabaseClient';
 

@@ -3,7 +3,7 @@ import React from 'react';
 import {IoMdClose} from 'react-icons/io';
 import BasicPhoto from '../img/chris-tIUXSj2iFVY-unsplash.jpg';
 import Image from 'next/image';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -31,9 +31,6 @@ function Modal({ closeModal, props }) {
   const [currentIndex, setCurrentIndex] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [layoutOpen, setLayoutOpen] = useState(true);
-  const [isSwipeClosing, setIsSwipeClosing] = useState(false);
-  const [myOffset, setMyOffset] = useState(0);
-  const [currentOffset, setCurrentOffset] = useState(0);
   const [isBasic, setIsBasic] = useState();
   const [photoId, setPhotoId] = useState();
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -46,23 +43,6 @@ function Modal({ closeModal, props }) {
   const handleImageLoad2 = () => {
     setImageLoaded2(true);
   };
-
-  useEffect(() => {
-    function handleResize() {
-        if (window.innerWidth < 1024 && window.innerWidth >= 725) {
-            setMyOffset(-100);
-        } else if (window.innerWidth < 725 && window.innerWidth >= 300) {
-            setMyOffset(-200)
-        } else if (window.innerWidth < 300) {
-            setMyOffset(-300)
-        } else {
-            setMyOffset(0);
-        }
-    }
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   const handleOutsideClick = (event) => {
     if (modalRef.current && !modalRef.current.contains(event.target)) {

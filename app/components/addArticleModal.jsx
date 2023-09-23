@@ -13,7 +13,6 @@ function AddArticleModal({ closeModal, props, tableN }) {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [inputText, setInputText] = useState('');
-  const [paragraphs, setParagraphs] = useState([]);
   const [title, setTitle] = useState('');
   const [subtitle, setSubtitle] = useState('');
   const [buttonText, setButtonText] = useState('');
