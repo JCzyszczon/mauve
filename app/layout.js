@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import CookieConsent from './components/cookies';
 import AuthProvider from './context/authProvider';
 import LogOutButton from './components/logOutButton';
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -50,6 +51,7 @@ export default function RootLayout({ children }) {
         <AuthProvider>
           <LogOutButton/>
           {children}
+          <Analytics/>
           <CookieConsent/>
         </AuthProvider>
       </body>
