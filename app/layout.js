@@ -15,7 +15,7 @@ export const metadata = {
   creator: 'Jakub Czyszczoń',
   publisher: 'Dagmara Misiewicz',
   title: 'Strona główna | Mauve.pl',
-  description: 'Poszukujesz specjalistki, która wykona makijaż permanentny brwi? W Mauve oferujemy profesjonalne usługi makijażu, stylizacji brwi oraz wiele innych zabiegów z zakresu pielęgnacji i upiększania. Zaufaj nam i pozwól podkreślić swoje piękno oraz poczuć się pewnie każdego dnia. Odwiedź nas już dziś w Krakowie!',
+  description: "Profesjonalny makijaż permanentny brwi w Krakowie. Odwiedź nas już dziś i podkreśl swoje piękno w Mauve.",
   keywords: ['Makijaż', 'Makijaż permanentny', 'Makijaż permanentny brwi', 'Usługi kosmetyczne', 'Uroda', 'Kraków', 'Salon kosmetyczny Kraków', 'Makijaż Kraków', 'Makijaż permanentny brwi Kraków', 'Makijaż permanentny Kraków', 'Makijaż okolicznościowy', 'Brwi', 'Mauve.pl', 'Mauve', 'Mauve Beauty', 'Dagmara', 'Dagmara Misiewicz', 'Jordanów', 'Małopolska', 'Makijaż ślubny', 'Makijaż próbny ślubny', 'Laminacja z koloryzacją i regulacją brwi', 'Koloryzacja z regulacją brwi', 'Laminacja z regulacją brwi'],
   alternates: {
     canonical: 'https://mauve.pl',
