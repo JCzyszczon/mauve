@@ -40,9 +40,9 @@ export const WelcomeEmail = () => {
               Czego możesz się ode mnie spodziewać?
             </Text>
             <Text style={paragraph3}>
-              <Text style={bold}>1. Nowości w ofercie:</Text> Będziesz pierwszą osobą, która dowie się o moich nowych usługach, produktach i technikach, dzięki którym możesz być jeszcze piękniejsza każdego dnia.<br/>
-              <Text style={bold}>2. Promocje i oferty specjalne:</Text> Nie przegapisz żadnej okazji na oszczędzenie pieniędzy! Moje subskrybentki zawsze jako pierwsze dostają cynk o zbliżających się promocjach.<br/>
-              <Text style={bold}>3. Porady i nowinki ze świata beauty:</Text> Chętnie podzielę się swoją wiedzą i doświadczeniem, aby pomóc Ci osiągnąć najlepsze rezultaty w dbaniu o swój wygląd. Będę na bieżąco informować Cię o najnowszych trendach w makijażu okazjonalnym oraz stylizacji i makijażu permanentnym brwi.
+              <strong>1. Nowości w ofercie:</strong> Będziesz pierwszą osobą, która dowie się o moich nowych usługach, produktach i technikach, dzięki którym możesz być jeszcze piękniejsza każdego dnia.<br/>
+              <strong>2. Promocje i oferty specjalne:</strong> Nie przegapisz żadnej okazji na oszczędzenie pieniędzy! Moje subskrybentki zawsze jako pierwsze dostają cynk o zbliżających się promocjach.<br/>
+              <strong>3. Porady i nowinki ze świata beauty:</strong> Chętnie podzielę się swoją wiedzą i doświadczeniem, aby pomóc Ci osiągnąć najlepsze rezultaty w dbaniu o swój wygląd. Będę na bieżąco informować Cię o najnowszych trendach w makijażu okazjonalnym oraz stylizacji i makijażu permanentnym brwi.
             </Text>
             <Text style={paragraph}>
               Jeszcze raz dziękuję, że tutaj jesteś. Mam nadzieję, że mój newsletter dostarczy Ci wiele inspiracji i podsunie przydatne rozwiązania Twoich problemów. Jeśli masz jakiekolwiek pytania lub sugestie, śmiało odpowiedz na tego maila. Jestem tu dla Ciebie!
