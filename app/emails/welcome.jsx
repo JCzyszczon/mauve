@@ -143,13 +143,13 @@ const h1 = {
 }
 
 const container = {
-  width: '100%',
+  width: '800px',
   margin: '30px auto',
   backgroundColor: '#ffffff',
 };
 
 const footer = {
-  width: '620px',
+  width: '800px',
   margin: '0 auto',
 };
 
