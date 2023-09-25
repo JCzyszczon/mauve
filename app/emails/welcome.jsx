@@ -18,7 +18,6 @@ export const WelcomeEmail = () => {
   return (
     <Html>
       <Head />
-      <Preview></Preview>
       <Body style={main}>
         <Container style={container}>
           <Section style={logo}>
