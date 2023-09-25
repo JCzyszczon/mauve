@@ -18,7 +18,7 @@ export const WelcomeEmail = () => {
   return (
     <Html>
       <Head />
-      <Preview>Witaj na pokładzie MAUVE!</Preview>
+      <Preview></Preview>
       <Body style={main}>
         <Container style={container}>
           <Section style={logo}>

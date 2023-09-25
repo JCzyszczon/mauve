@@ -11,7 +11,7 @@ export async function POST(req) {
     await resend.sendEmail({
         from: "dagmara@mauve.pl",
         to: userEmail,
-        subject: "Newsletter Mauve",
+        subject: "Witaj na pokładzie MAUVE!",
         react: WelcomeEmail(),
     });
 
