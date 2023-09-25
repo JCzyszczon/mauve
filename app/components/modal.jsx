@@ -156,9 +156,9 @@ function Modal({ closeModal, props }) {
   return (
     <>
     <section onClick={handleOutsideClick} className={`w-screen h-screen bg-[#00000099] fixed left-0 top-0 z-[1000] flex ${layoutOpen ? ('justify-start') : ('justify-end')} 2xl:items-center items-start lg:py-[3%] py-[3%] lg:px-[5%] px-[3%] drop-shadow-2xl overflow-y-scroll overflow-x-hidden`}>
-      <motion.section variants={swiperItem} initial='hidden' whileInView='show' exit='exit' viewport={{ once: false, amount: 0.5 }} ref={modalRef} className='lg:w-[90%] sm:w-[95%] w-[100%] flex sm:flex-row flex-col bg-[#fff] 2xl:min-h-[700px] min-h-0 2xl:max-h-[700px] max-h-none relative rounded-md overflow-hidden'>
+      <motion.section variants={swiperItem} initial='hidden' whileInView='show' exit='exit' viewport={{ once: false, amount: 0 }} ref={modalRef} className='lg:w-[90%] sm:w-[95%] w-[100%] flex sm:flex-row flex-col bg-[#fff] 2xl:min-h-[700px] min-h-0 2xl:max-h-[700px] max-h-none relative rounded-md overflow-hidden'>
         <button onClick={handleClose} className='absolute right-2 top-2 z-[100]'><IoMdClose className='text-3xl text-[#705555] hover:text-[#604444]'/></button>
-        <motion.section variants={cardVariants} initial='offscreen' whileInView='onscreen' viewport={{ once: true, amount: 0.5 }} className='sm:w-1/2 w-full flex flex-col justify-center items-center p-2 gap-2'>
+        <motion.section variants={cardVariants} initial='offscreen' whileInView='onscreen' viewport={{ once: true, amount: 0}} className='sm:w-1/2 w-full flex flex-col justify-center items-center p-2 gap-2'>
         {props.zdjecia.length >= 1 ? (
           <>
           <Swiper loop={true} spaceBetween={10} thumbs={{ swiper: thumbsSwiper }} modules={[FreeMode, Navigation, Thumbs]} className="!w-full !flex !justify-center !items-center bg-gray-100 cursor-pointer !rounded-lg !overflow-hidden">
