@@ -18,7 +18,7 @@ export const WelcomeEmail = () => {
   return (
     <Html>
       <Head />
-      <Preview>dziękuję za dołączenie!</Preview>
+      <Preview>Witaj na pokładzie MAUVE!</Preview>
       <Body style={main}>
         <Container style={container}>
           <Section style={logo}>
@@ -32,19 +32,20 @@ export const WelcomeEmail = () => {
             </Row>
           </Section>
           <Section style={content}>
-            <Text style={h1}>Witaj,</Text>
+            <Text style={h1}>Cześć!</Text>
             <Text style={paragraph}>
-            There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.
+              Dziękuję Ci za zapisanie się do mojego newslettera i bardzo się cieszę, że od teraz będziemy w bezpośrednim kontakcie. Od dzisiaj jesteś częścią społeczności odkrywającej tajemnice dbania o wygląd w subtelny i prosty sposób, który zawsze wpisuje się w aktualne trendy. 
             </Text>
             <Text style={paragraph}>
-            All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary.
+              Czego możesz się ode mnie spodziewać?
+            </Text>
+            <Text style={paragraph3}>
+              <Text style={bold}>1. Nowości w ofercie:</Text> Będziesz pierwszą osobą, która dowie się o moich nowych usługach, produktach i technikach, dzięki którym możesz być jeszcze piękniejsza każdego dnia.<br/>
+              <Text style={bold}>2. Promocje i oferty specjalne:</Text> Nie przegapisz żadnej okazji na oszczędzenie pieniędzy! Moje subskrybentki zawsze jako pierwsze dostają cynk o zbliżających się promocjach.<br/>
+              <Text style={bold}>3. Porady i nowinki ze świata beauty:</Text> Chętnie podzielę się swoją wiedzą i doświadczeniem, aby pomóc Ci osiągnąć najlepsze rezultaty w dbaniu o swój wygląd. Będę na bieżąco informować Cię o najnowszych trendach w makijażu okazjonalnym oraz stylizacji i makijażu permanentnym brwi.
             </Text>
             <Text style={paragraph}>
-            It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures. Żeby zapoznać się z regulaminem {' '}
-              <Link href="https://mauve.pl/regulamin" style={link}>
-                kliknij tutaj
-              </Link>
-              .
+              Jeszcze raz dziękuję, że tutaj jesteś. Mam nadzieję, że mój newsletter dostarczy Ci wiele inspiracji i podsunie przydatne rozwiązania Twoich problemów. Jeśli masz jakiekolwiek pytania lub sugestie, śmiało odpowiedz na tego maila. Jestem tu dla Ciebie!
             </Text>
             <Section style={sectionStyle}>
               <Button href='https://www.facebook.com/mauvebeautypl/?locale=pl_PL' style={buttonStyle}><Text style={paragraph2}>Umów się</Text></Button>
@@ -57,9 +58,9 @@ export const WelcomeEmail = () => {
               .
             </Text>
             <Text style={paragraph}>
-              Do zobaczenia,
+              Miłego dnia,
               <br />
-              Mauve
+              Dagmara
             </Text>
           </Section>
         </Container>
@@ -102,6 +103,16 @@ const paragraph = {
   lineHeight: 1.5,
   fontSize: 14,
 };
+
+const paragraph3 = {
+  lineHeight: 1.5,
+  fontSize: 14,
+  padding: '0px 5px',
+};
+
+const bold = {
+  fontWeight: 800,
+}
 
 const paragraph2 = {
   lineHeight: 1,

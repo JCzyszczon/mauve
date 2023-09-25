@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import {IoMdClose} from 'react-icons/io';
-import BasicPhoto from '../img/chris-tIUXSj2iFVY-unsplash.jpg';
+import BasicPhoto from '../img/mauve-lokal.png';
 import Image from 'next/image';
 import { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
