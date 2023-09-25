@@ -144,7 +144,7 @@ const h1 = {
 }
 
 const container = {
-  width: '1000px',
+  width: '100%',
   margin: '30px auto',
   backgroundColor: '#ffffff',
 };
