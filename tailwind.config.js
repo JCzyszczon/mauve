@@ -14,7 +14,7 @@ module.exports = {
         'theSeasons2': ['TheSeasons2'],
       },
       backgroundImage: {
-        'mainBackground': "url('img/background.png')",
+        'mainBackground': "url('img/background-mail.webp')",
       },
     },
   },
