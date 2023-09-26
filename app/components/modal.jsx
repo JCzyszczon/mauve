@@ -3,7 +3,7 @@ import React from 'react';
 import {IoMdClose} from 'react-icons/io';
 import BasicPhoto from '../img/mauve-lokal.png';
 import Image from 'next/image';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -26,6 +26,8 @@ function Modal({ closeModal, props }) {
 
   const modalRef = useRef(null);
 
+  const sectionRef = useRef(null);
+
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [clickedSlide, setClickedSlide] = useState();
   const [currentIndex, setCurrentIndex] = useState();
@@ -35,6 +37,44 @@ function Modal({ closeModal, props }) {
   const [photoId, setPhotoId] = useState();
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageLoaded2, setImageLoaded2] = useState(false);
+  const [userScroll, setUserScroll] = useState(false);
+  const [isOverflowVisible, setIsOverflowVisible] = useState(true);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+  
+    if (!section) return;
+  
+    const scrollThreshold = 1;
+  
+    const handleScroll = () => {
+      const isAtBottom =
+        section.scrollTop + section.clientHeight >= section.scrollHeight;
+  
+      if ((isAtBottom && !userScroll) || (section.scrollTop >= scrollThreshold)) {
+        setUserScroll(true);
+      } else if (!isAtBottom && userScroll) {
+        setUserScroll(false);
+      }
+
+      // Sprawdź, czy treść jest większa niż dostępna wysokość sekcji
+      const isContentLarger = section.scrollHeight > section.clientHeight;
+
+      // Jeśli treść jest większa i overflow-y jest ukryte, zmień na scroll
+      if (isContentLarger && !isOverflowVisible) {
+        setIsOverflowVisible(true);
+      } else if (!isContentLarger && isOverflowVisible) {
+        // Jeśli treść nie jest większa i overflow-y jest widoczne, zmień na auto
+        setIsOverflowVisible(false);
+      }
+    };
+  
+    section.addEventListener("scroll", handleScroll);
+  
+    return () => {
+      section.removeEventListener("scroll", handleScroll);
+    };
+  }, [userScroll, isOverflowVisible]);
 
   const handleImageLoad = () => {
     setImageLoaded(true);
@@ -165,13 +205,13 @@ function Modal({ closeModal, props }) {
     <section onClick={handleOutsideClick} className={`w-screen h-screen bg-[#00000099] fixed left-0 top-0 z-[1000] flex ${layoutOpen ? ('justify-start') : ('justify-end')} 2xl:items-center items-start lg:py-[3%] py-[3%] lg:px-[5%] px-[3%] drop-shadow-2xl overflow-y-scroll overflow-x-hidden`}>
       <motion.section variants={swiperItem} initial='hidden' whileInView='show' exit='exit' viewport={{ once: false, amount: 0 }} ref={modalRef} className='lg:w-[90%] sm:w-[95%] w-[100%] flex sm:flex-row flex-col bg-[#fff] lg:h-[700px] sm:h-auto h-full relative rounded-md overflow-hidden'>
         <button onClick={handleClose} className='absolute right-2 top-2 z-[100]'><IoMdClose className='text-3xl text-[#705555] hover:text-[#604444]'/></button>
-        <motion.section variants={cardVariants} initial='offscreen' whileInView='onscreen' viewport={{ once: true, amount: 0}} className='sm:w-1/2 w-full flex flex-col justify-center items-center p-2 gap-2'>
+        <motion.section variants={cardVariants} initial='offscreen' whileInView='onscreen' viewport={{ once: true, amount: 0}} className={`sm:w-1/2 w-full sm:max-h-none duration-200 flex flex-col justify-center items-center p-2 gap-2`}>
         {props.zdjecia.length >= 1 ? (
           <>
           <Swiper loop={true} spaceBetween={10} thumbs={{ swiper: thumbsSwiper }} modules={[FreeMode, Navigation, Thumbs]} className="!w-full !flex !justify-center !items-center bg-gray-100 cursor-pointer !rounded-lg !overflow-hidden">
           {props.zdjecia.map((zdjecie, index) => (
-            <SwiperSlide onClick={() => getSlide(props.zdjecia, props.id, index, false)} key={'Główne' + index} className='!w-full !flex !relative !justify-center !items-center sm:!h-full !h-[350px]'>
-              <Image src={supabaseImport(`${props.id}/${zdjecie.zdj}`)} width={730} height={490} quality={100} alt={index} onLoadingComplete={handleImageLoad} className='h-full w-auto cursor-pointer 2xl:object-cover sm:object-contain object-cover'/>
+            <SwiperSlide onClick={() => getSlide(props.zdjecia, props.id, index, false)} key={'Główne' + index} className={`!w-full !flex !relative !justify-center !duration-500 !items-center sm:!h-full`}>
+              <Image src={supabaseImport(`${props.id}/${zdjecie.zdj}`)} width={730} height={490} quality={100} alt={index} onLoadingComplete={handleImageLoad} className={`h-full w-auto cursor-pointer 2xl:object-cover sm:object-contain duration-500 object-cover ${userScroll ? '!h-[150px]' : '!h-[350px]'}`}/>
               {!imageLoaded &&
                 <div className='w-full h-full flex justify-center items-center absolute left-0 top-0 bg-gray-100'>
                   <svg className="mr-3 h-6 w-6 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -183,7 +223,7 @@ function Modal({ closeModal, props }) {
             </SwiperSlide>
           ))}
           </Swiper>
-          <Swiper onSwiper={setThumbsSwiper} loop={true} spaceBetween={10} slidesPerView={4} freeMode={true} watchSlidesProgress={true} modules={[FreeMode, Navigation, Thumbs]} className="mySwiper3 !w-full !flex !justify-center !items-center bg-gray-100 !rounded-lg sm:!max-h-[150px] sm:!h-auto !max-h-none !h-[100px]">
+          <Swiper onSwiper={setThumbsSwiper} loop={true} spaceBetween={10} slidesPerView={4} freeMode={true} watchSlidesProgress={true} modules={[FreeMode, Navigation, Thumbs]} className={`mySwiper3 !w-full !duration-500 !justify-center !items-center bg-gray-100 !rounded-lg sm:!max-h-[150px] sm:!h-auto !max-h-none ${userScroll ? '!h-0' : '!h-[100px]'}`}>
           {props.zdjecia.map((zdjecie, index) => (
               <SwiperSlide key={index} className='modalSlide2 !bg-gray-200 !cursor-pointer !flex !justify-center !relative !items-center overflow-hidden'>
                 <Image src={supabaseImport(`${props.id}/${zdjecie.zdj}`)} width={730} height={490} alt={'Zdjęcie' + index} onLoadingComplete={handleImageLoad2} className='w-auto h-full sm:object-cover object-cover'/>
@@ -203,7 +243,7 @@ function Modal({ closeModal, props }) {
           <Image onClick={() => getSlide(BasicPhoto, 0, true)} src={BasicPhoto} alt='Offer' className='object-cover h-full w-auto cursor-pointer rounded-lg'/>
         )}
         </motion.section>
-        <motion.section variants={containerSec} initial='hidden' whileInView='show' exit='exit' viewport={{ once: true, amount: 0.5}} className='sm:w-1/2 w-full flex flex-col gap-5 px-5 sm:py-10 py-5 sm:justify-center justify-start relative items-center overflow-y-scroll'>
+        <motion.section ref={sectionRef} variants={containerSec} initial='hidden' whileInView='show' exit='exit' viewport={{ once: true, amount: 0.5}} className={`sm:w-1/2 w-full flex flex-col gap-5 px-5 sm:py-10 py-5 sm:justify-center justify-start relative items-center ${isOverflowVisible ? 'overflow-y-scroll' : 'overflow-y-auto'}`}>
           <AnimatedText2 text={props.tytul} anDelay={0.45} styling={'xl:text-[26px] leading-[2rem] lg:text-xl text-lg font-theSeasons2 text-center font-bold tracking-widest flex flex-wrap justify-center items-center'} className=''></AnimatedText2>
           <motion.div variants={container} initial='hidden' whileInView='show' exit='exit' viewport={{ once: true, amount: 0.5}} className='w-full sm:mt-5 mt-1 h-auto flex flex-col justify-center items-center text-start lg:gap-4 gap-2 font-theSeasons xl:text-base text-sm'>
           {props.paragrafy.map((paragraf, i) => (
