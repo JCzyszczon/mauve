@@ -83,17 +83,18 @@ function EditArticleModal({ closeModal, props, tableN }) {
 
     const fullPath = picture;
     const fileName = fullPath.split('\\').pop() || fullPath.split('/').pop();
+    const newFileName = fileName.replace(/[^a-zA-Z0-9.-]/g, '_');
 
     const fileInput = document.querySelector('#fileInput');
     const file = fileInput.files[0];
 
     setLoading(true);
 
-    if (fileName && !(fileName === props.zdjecie)) {
+    if (newFileName && !(newFileName === props.zdjecie)) {
         const {data, error} = await supabase
         .from('aktualnosci')
         .update({
-          zdjecie: fileName,
+          zdjecie: newFileName,
         })
         .eq('id', props.id);
 
@@ -107,7 +108,7 @@ function EditArticleModal({ closeModal, props, tableN }) {
         } else {
           const { data: fileData, error: fileError } = await supabase.storage
           .from('aktualnosci')
-          .upload(`${fileName}`, file);
+          .upload(`${newFileName}`, file);
 
           if (fileError) {
               setLoading(false);
@@ -130,7 +131,7 @@ function EditArticleModal({ closeModal, props, tableN }) {
               }
           }
         }
-    } else if (fileName === props.zdjecie) {
+    } else if (newFileName === props.zdjecie) {
         setLoading(false);
         setMessage('Zdjęcie już widnieje');
         setModalState(true);

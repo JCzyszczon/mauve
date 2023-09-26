@@ -13,7 +13,6 @@ function AddOfferModal({ closeModal, props, tableN }) {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [inputDescription, setInputDescription] = useState('');
-  const [inputPrice, setInputPrice] = useState('');
   const [inputTerms, setInputTerms] = useState('');
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
@@ -47,10 +46,6 @@ function AddOfferModal({ closeModal, props, tableN }) {
     setInputDescription(e.target.value);
   };
 
-  const handleInputPriceChange = (e) => {
-    setInputPrice(e.target.value);
-  };
-
   const handleInputTermsChange = (e) => {
     setInputTerms(e.target.value);
   };
@@ -72,21 +67,6 @@ function AddOfferModal({ closeModal, props, tableN }) {
     
         return {
           tekst: newText.trim(),
-        };
-    });
-
-    const priceArray = inputPrice.split('\n\n').map((paragraph) => {
-        const cenaRegex = /\[(.*?)\]/;
-        const cenaMatch = paragraph.match(cenaRegex);
-        const cena = cenaMatch ? cenaMatch[1].trim() : '';
-
-        const tekst = cenaMatch
-        ? paragraph.replace(cenaRegex, '').trim()
-        : paragraph.trim();
-
-        return {
-            tekst: tekst,
-            cena: cena,
         };
     });
 
@@ -132,7 +112,7 @@ function AddOfferModal({ closeModal, props, tableN }) {
             const fileName = file.name;
             
             uploadedFilesArray.push(file);
-            uploadedImagesArray.push({ zdj: fileName });
+            uploadedImagesArray.push({ zdj: fileName.replace(/[^a-zA-Z0-9.-]/g, '_') });
         }
     } else {
         uploadedImagesArray.push(null);
@@ -144,7 +124,7 @@ function AddOfferModal({ closeModal, props, tableN }) {
     if(imgArr) {
         const { data, error } = await supabase
         .from('oferta')
-        .insert({tytul: title, czas: time, cena: price,  paragrafy: paragraphsArray, cennik: priceArray, regulamin: termsArray, zdjecia: imgArr, priorytet: priority})
+        .insert({tytul: title, czas: time, cena: price,  paragrafy: paragraphsArray, regulamin: termsArray, zdjecia: imgArr, priorytet: priority})
         .select()
 
         if(error) {
@@ -158,7 +138,7 @@ function AddOfferModal({ closeModal, props, tableN }) {
             if(fileArr) {
                 for(let i = 0; i < fileArr.length; i++) {
                     const file = fileArr[i];
-                    const fileName = file.name;
+                    const fileName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
                     const fileData = file;
 
                     const { data: fileDt, error } = await supabase.storage
@@ -228,7 +208,7 @@ function AddOfferModal({ closeModal, props, tableN }) {
                 </div>
                 <div className="relative md:mt-2 mt-7">
                     <textarea
-                        rows="5"
+                        rows="10"
                         cols="50"
                         id='description'
                         name='description'
@@ -239,20 +219,6 @@ function AddOfferModal({ closeModal, props, tableN }) {
                         onChange={handleInputDescriptionChange}
                     />
                     <label htmlFor="description" className="absolute left-0 -top-5 text-gray-600 text-sm pl-2 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-sm">Wprowadź opis...</label>
-                </div>
-                <div className="relative md:mt-2 mt-7">
-                    <textarea
-                        rows="4"
-                        cols="50"
-                        id='cennik'
-                        name='cennik'
-                        className="peer md:w-[600px] p-1 w-full border-2 border-gray-300 text-gray-900 sm:text-base text-sm placeholder-transparent focus:outline-none focus:border-[#705555]"
-                        placeholder="Wprowadź cennik..."
-                        required
-                        value={inputPrice}
-                        onChange={handleInputPriceChange}
-                    />
-                    <label htmlFor="cennik" className="absolute left-0 -top-5 text-gray-600 text-sm pl-2 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-sm">Wprowadź cennik...</label>
                 </div>
                 <div className="relative md:mt-2 mt-7">
                     <textarea

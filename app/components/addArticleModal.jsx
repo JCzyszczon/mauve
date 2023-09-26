@@ -65,6 +65,7 @@ function AddArticleModal({ closeModal, props, tableN }) {
 
     const fullPath = picture;
     const fileName = fullPath.split('\\').pop() || fullPath.split('/').pop();
+    const newFileName = fileName.replace(/[^a-zA-Z0-9.-]/g, '_');
 
     const fileInput = document.querySelector('#fileInput');
     const file = fileInput.files[0];
@@ -74,7 +75,7 @@ function AddArticleModal({ closeModal, props, tableN }) {
     if (file) {
       const { data: fileData, error: fileError } = await supabase.storage
         .from('aktualnosci')
-        .upload(`${fileName}`, file);
+        .upload(`${newFileName}`, file);
   
       if (fileError) {
         setLoading(false);
@@ -86,7 +87,7 @@ function AddArticleModal({ closeModal, props, tableN }) {
       } else {
         const { data, error } = await supabase
         .from('aktualnosci')
-        .insert({tytul: title, podtytul: subtitle, zdjecie: fileName, paragrafy: paragraphsArray, przycisk: buttonText, linkPrzycisk: buttonLink})
+        .insert({tytul: title, podtytul: subtitle, zdjecie: newFileName, paragrafy: paragraphsArray, przycisk: buttonText, linkPrzycisk: buttonLink})
         .select()
 
         if(error) {

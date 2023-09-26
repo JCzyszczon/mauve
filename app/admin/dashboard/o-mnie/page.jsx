@@ -63,17 +63,18 @@ export default function Home() {
     
     const fullPath = picture;
     const fileName = fullPath.split('\\').pop() || fullPath.split('/').pop();
+    const newFileName = fileName.replace(/[^a-zA-Z0-9.-]/g, '_');
 
     const fileInput = document.querySelector('#fileInput');
     const file = fileInput.files[0];
 
     setLoading(true);
 
-    if (fileName && !(fileName === aboutData[0].zdjecie)) {
+    if (newFileName && !(newFileName === aboutData[0].zdjecie)) {
       const {data, error} = await supabase
       .from('about')
       .update({
-        zdjecie: fileName,
+        zdjecie: newFileName,
       })
       .eq('id', 1);
 
@@ -87,7 +88,7 @@ export default function Home() {
       } else {
         const { data: fileData, error: fileError } = await supabase.storage
         .from('about')
-        .upload(`${fileName}`, file);
+        .upload(`${newFileName}`, file);
 
         if(fileError) {
           setLoading(false);
@@ -111,7 +112,7 @@ export default function Home() {
           }
         }
       }
-    } else if (fileName === aboutData[0].zdjecie) {
+    } else if (newFileName === aboutData[0].zdjecie) {
         setLoading(false);
         setMessage('Zdjęcie już widnieje');
         setModalState(true);

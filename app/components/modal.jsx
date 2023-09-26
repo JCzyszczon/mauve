@@ -64,6 +64,13 @@ function Modal({ closeModal, props }) {
     setPhotoId(id);
   }
 
+  function formatText(text) {
+    const regex = /\[([^\]]+)\]/g;
+  
+    const formattedText = text.replace(regex, '<strong>$1</strong>');
+  
+    return formattedText;
+  }
 
   const replaceLinksInText = (text, linki) => {
     return text.split(/(\[[^\]]+])/).map((part, index) => {
@@ -156,7 +163,7 @@ function Modal({ closeModal, props }) {
   return (
     <>
     <section onClick={handleOutsideClick} className={`w-screen h-screen bg-[#00000099] fixed left-0 top-0 z-[1000] flex ${layoutOpen ? ('justify-start') : ('justify-end')} 2xl:items-center items-start lg:py-[3%] py-[3%] lg:px-[5%] px-[3%] drop-shadow-2xl overflow-y-scroll overflow-x-hidden`}>
-      <motion.section variants={swiperItem} initial='hidden' whileInView='show' exit='exit' viewport={{ once: false, amount: 0 }} ref={modalRef} className='lg:w-[90%] sm:w-[95%] w-[100%] flex sm:flex-row flex-col bg-[#fff] 2xl:min-h-[700px] min-h-0 2xl:max-h-[700px] max-h-none relative rounded-md overflow-hidden'>
+      <motion.section variants={swiperItem} initial='hidden' whileInView='show' exit='exit' viewport={{ once: false, amount: 0 }} ref={modalRef} className='lg:w-[90%] sm:w-[95%] w-[100%] flex sm:flex-row flex-col bg-[#fff] lg:h-[700px] sm:h-auto h-full relative rounded-md overflow-hidden'>
         <button onClick={handleClose} className='absolute right-2 top-2 z-[100]'><IoMdClose className='text-3xl text-[#705555] hover:text-[#604444]'/></button>
         <motion.section variants={cardVariants} initial='offscreen' whileInView='onscreen' viewport={{ once: true, amount: 0}} className='sm:w-1/2 w-full flex flex-col justify-center items-center p-2 gap-2'>
         {props.zdjecia.length >= 1 ? (
@@ -196,31 +203,21 @@ function Modal({ closeModal, props }) {
           <Image onClick={() => getSlide(BasicPhoto, 0, true)} src={BasicPhoto} alt='Offer' className='object-cover h-full w-auto cursor-pointer rounded-lg'/>
         )}
         </motion.section>
-        <motion.section variants={containerSec} initial='hidden' whileInView='show' exit='exit' viewport={{ once: true, amount: 0.5}} className='sm:w-1/2 w-full flex flex-col gap-5 px-5 sm:py-10 py-5 justify-center items-center'>
+        <motion.section variants={containerSec} initial='hidden' whileInView='show' exit='exit' viewport={{ once: true, amount: 0.5}} className='sm:w-1/2 w-full flex flex-col gap-5 px-5 sm:py-10 py-5 sm:justify-center justify-start relative items-center overflow-y-scroll'>
           <AnimatedText2 text={props.tytul} anDelay={0.45} styling={'xl:text-[26px] leading-[2rem] lg:text-xl text-lg font-theSeasons2 text-center font-bold tracking-widest flex flex-wrap justify-center items-center'} className=''></AnimatedText2>
           <motion.div variants={container} initial='hidden' whileInView='show' exit='exit' viewport={{ once: true, amount: 0.5}} className='w-full sm:mt-5 mt-1 h-auto flex flex-col justify-center items-center text-start lg:gap-4 gap-2 font-theSeasons xl:text-base text-sm'>
           {props.paragrafy.map((paragraf, i) => (
-            <motion.p variants={parItem} key={i} className='whitespace-pre-line w-full' dangerouslySetInnerHTML={{__html: paragraf.tekst}}></motion.p>
+            <motion.p variants={parItem} key={i} className='whitespace-pre-line w-full' dangerouslySetInnerHTML={{__html: formatText(paragraf.tekst)}}></motion.p>
           ))}
           </motion.div>
-          {props.cennik && (
-          <motion.div variants={container2} initial='hidden' whileInView='show' exit='exit' viewport={{ once: true, amount: 0.5}} className='w-full bg-gray-100 h-auto flex flex-col gap-4 p-4 rounded-lg'>
-            {props.cennik.map((ceny, i) => (
-              <motion.div variants={parItem} key={i} className='w-auto h-auto flex font-klein font-bold justify-around items-center xl:text-base text-sm'>
-                <p className='w-full text-start'>{ceny.tekst}</p>
-                <p className='w-full border-dotted border-[#666] border-b-2 text-end pb-1'>{ceny.cena}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-          )}
           {props.regulamin && (
-            <motion.div variants={container} initial='hidden' whileInView='show' exit='exit' viewport={{ once: true, amount: 0.5}} className='w-full h-auto flex justify-start items-center font-theSeasons xl:text-base text-sm'>
+            <motion.div variants={container} initial='hidden' whileInView='show' exit='exit' viewport={{ once: true, amount: 0.5}} className='w-full h-auto flex justify-start items-center font-theSeasons xl:text-base text-sm mt-2'>
               {props.regulamin.map((reg, i) => (
                 <motion.p variants={parItem} key={i}>{replaceLinksInText(reg.tekst, reg.linki)}</motion.p>
               ))}
             </motion.div>
           )}
-          <motion.div variants={container} initial='hidden' whileInView='show' exit='exit' viewport={{ once: true, amount: 0.5}} className='w-full h-auto flex sm:justify-end px-10 justify-center items-center'>
+          <motion.div variants={container} initial='hidden' whileInView='show' exit='exit' viewport={{ once: true, amount: 0.5}} className='w-full h-auto sm:bg-inherit bg-[#f3f4f6aa] backdrop-blur-sm sm:backdrop-filter-none backdrop-filter flex sm:justify-end sticky bottom-0 left-1/2 py-2 rounded-md justify-center items-center'>
             <motion.a variants={parItem} href="https://www.facebook.com/mauvebeautypl/?locale=pl_PL"><button className='uppercase tracking-widest bg-[#cdbebf] text-[#fff] hover:scale-105 duration-200 sm:text-lg text-sm px-5 py-2 font-medium cursor-pointer font-klein'>Umów się</button></motion.a>
           </motion.div>
         </motion.section>
