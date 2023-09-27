@@ -27,6 +27,7 @@ function Modal({ closeModal, props }) {
   const modalRef = useRef(null);
 
   const sectionRef = useRef(null);
+  const sectionRef2 = useRef(null);
 
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [clickedSlide, setClickedSlide] = useState();
@@ -38,18 +39,33 @@ function Modal({ closeModal, props }) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageLoaded2, setImageLoaded2] = useState(false);
   const [userScroll, setUserScroll] = useState(false);
-  const [isOverflowVisible, setIsOverflowVisible] = useState(true);
+  const [elements, setElements] = useState(false);
+  const [userBottom, setUserBottom] = useState(false);
+
+  useEffect(() => {
+    function handleResize() {
+    if (window.innerHeight <= 710) {
+        setElements(true);
+    } else {
+        setElements(false);
+    }
+    }
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const section = sectionRef.current;
   
-    if (!section) return;
+    if (!section) return ;
   
     const scrollThreshold = 1;
   
     const handleScroll = () => {
       const isAtBottom =
         section.scrollTop + section.clientHeight >= section.scrollHeight;
+      const isContentLarger = section.scrollHeight > section.clientHeight;
   
       if ((isAtBottom && !userScroll) || (section.scrollTop >= scrollThreshold)) {
         setUserScroll(true);
@@ -57,15 +73,10 @@ function Modal({ closeModal, props }) {
         setUserScroll(false);
       }
 
-      // Sprawdź, czy treść jest większa niż dostępna wysokość sekcji
-      const isContentLarger = section.scrollHeight > section.clientHeight;
-
-      // Jeśli treść jest większa i overflow-y jest ukryte, zmień na scroll
-      if (isContentLarger && !isOverflowVisible) {
-        setIsOverflowVisible(true);
-      } else if (!isContentLarger && isOverflowVisible) {
-        // Jeśli treść nie jest większa i overflow-y jest widoczne, zmień na auto
-        setIsOverflowVisible(false);
+      if(isAtBottom && !isContentLarger) {
+        setUserBottom(true);
+      } else {
+        setUserBottom(false);
       }
     };
   
@@ -74,7 +85,35 @@ function Modal({ closeModal, props }) {
     return () => {
       section.removeEventListener("scroll", handleScroll);
     };
-  }, [userScroll, isOverflowVisible]);
+  }, [userScroll]);
+
+  function handleTouchStart(e) {
+    if(userBottom) {
+      const startY = e.touches[0].clientY;
+
+      function handleTouchMove(e) {
+        const currentY = e.touches[0].clientY;
+  
+        const deltaY = currentY - startY;
+  
+        if (deltaY > 10) {
+          setUserScroll(false);
+          setUserBottom(false);
+        }
+      }
+  
+      function handleTouchEnd() {
+        sectionRef.current.removeEventListener('touchmove', handleTouchMove);
+        sectionRef.current.removeEventListener('touchend', handleTouchEnd);
+      }
+  
+      sectionRef.current.addEventListener('touchmove', handleTouchMove);
+      sectionRef.current.addEventListener('touchend', handleTouchEnd);
+    } else {
+      setUserBottom(false);
+      return;
+    }
+  }
 
   const handleImageLoad = () => {
     setImageLoaded(true);
@@ -202,16 +241,16 @@ function Modal({ closeModal, props }) {
 
   return (
     <>
-    <section onClick={handleOutsideClick} className={`w-screen h-screen bg-[#00000099] fixed left-0 top-0 z-[1000] flex ${layoutOpen ? ('justify-start') : ('justify-end')} 2xl:items-center items-start lg:py-[3%] py-[3%] lg:px-[5%] px-[3%] drop-shadow-2xl overflow-y-scroll overflow-x-hidden`}>
-      <motion.section variants={swiperItem} initial='hidden' whileInView='show' exit='exit' viewport={{ once: false, amount: 0 }} ref={modalRef} className='lg:w-[90%] sm:w-[95%] w-[100%] flex sm:flex-row flex-col bg-[#fff] lg:h-[700px] sm:h-auto h-full relative rounded-md overflow-hidden'>
+    <section onClick={handleOutsideClick} className={`w-screen h-screen bg-[#00000099] fixed left-0 top-0 z-[1000] flex ${layoutOpen ? ('justify-start') : ('justify-end')} ${elements ? 'items-start' : 'items-center'} lg:py-[3%] py-[3%] lg:px-[5%] px-[3%] drop-shadow-2xl overflow-y-scroll overflow-x-hidden`}>
+      <motion.section variants={swiperItem} initial='hidden' whileInView='show' exit='exit' viewport={{ once: false, amount: 0 }} ref={modalRef} className='lg:w-[90%] sm:w-[95%] w-[100%] flex sm:flex-row flex-col bg-[#fff] sm:h-[700px] h-full relative rounded-md overflow-hidden !box-border'>
         <button onClick={handleClose} className='absolute right-2 top-2 z-[100]'><IoMdClose className='text-3xl text-[#705555] hover:text-[#604444]'/></button>
-        <motion.section variants={cardVariants} initial='offscreen' whileInView='onscreen' viewport={{ once: true, amount: 0}} className={`sm:w-1/2 w-full sm:max-h-none duration-200 flex flex-col justify-center items-center p-2 gap-2`}>
+        <motion.section variants={cardVariants} initial='offscreen' whileInView='onscreen' viewport={{ once: true, amount: 0}} className='sm:w-1/2 w-full sm:max-h-none max-h-1/2 duration-200 flex flex-col justify-center items-center p-2 gap-2'>
         {props.zdjecia.length >= 1 ? (
           <>
-          <Swiper loop={true} spaceBetween={10} thumbs={{ swiper: thumbsSwiper }} modules={[FreeMode, Navigation, Thumbs]} className="!w-full !flex !justify-center !items-center bg-gray-100 cursor-pointer !rounded-lg !overflow-hidden">
+          <Swiper loop={true} spaceBetween={10} thumbs={{ swiper: thumbsSwiper }} modules={[FreeMode, Navigation, Thumbs]} className="!w-full !flex !justify-center sm:!h-full !h-auto !items-center bg-gray-100 cursor-pointer !rounded-lg !overflow-hidden">
           {props.zdjecia.map((zdjecie, index) => (
-            <SwiperSlide onClick={() => getSlide(props.zdjecia, props.id, index, false)} key={'Główne' + index} className={`!w-full !flex !relative !justify-center !duration-500 !items-center sm:!h-full`}>
-              <Image src={supabaseImport(`${props.id}/${zdjecie.zdj}`)} width={730} height={490} quality={100} alt={index} onLoadingComplete={handleImageLoad} className={`h-full w-auto cursor-pointer 2xl:object-cover sm:object-contain duration-500 object-cover ${userScroll ? '!h-[150px]' : '!h-[350px]'}`}/>
+            <SwiperSlide onClick={() => getSlide(props.zdjecia, props.id, index, false)} key={'Główne' + index} className={`!w-full !flex !relative !justify-center !duration-500 !items-center sm:!h-full !h-auto`}>
+              <Image src={supabaseImport(`${props.id}/${zdjecie.zdj}`)} width={730} height={490} quality={100} alt={index} onLoadingComplete={handleImageLoad} className={`sm:h-full w-auto cursor-pointer 2xl:object-cover sm:object-contain duration-500 object-cover ${userScroll ? 'h-[150px]' : 'h-[300px]'}`}/>
               {!imageLoaded &&
                 <div className='w-full h-full flex justify-center items-center absolute left-0 top-0 bg-gray-100'>
                   <svg className="mr-3 h-6 w-6 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -243,23 +282,71 @@ function Modal({ closeModal, props }) {
           <Image onClick={() => getSlide(BasicPhoto, 0, true)} src={BasicPhoto} alt='Offer' className='object-cover h-full w-auto cursor-pointer rounded-lg'/>
         )}
         </motion.section>
-        <motion.section ref={sectionRef} variants={containerSec} initial='hidden' whileInView='show' exit='exit' viewport={{ once: true, amount: 0.5}} className={`sm:w-1/2 w-full flex flex-col gap-5 px-5 sm:py-10 py-5 sm:justify-center justify-start relative items-center ${isOverflowVisible ? 'overflow-y-scroll' : 'overflow-y-auto'}`}>
-          <AnimatedText2 text={props.tytul} anDelay={0.45} styling={'xl:text-[26px] leading-[2rem] lg:text-xl text-lg font-theSeasons2 text-center font-bold tracking-widest flex flex-wrap justify-center items-center'} className=''></AnimatedText2>
-          <motion.div variants={container} initial='hidden' whileInView='show' exit='exit' viewport={{ once: true, amount: 0.5}} className='w-full sm:mt-5 mt-1 h-auto flex flex-col justify-center items-center text-start lg:gap-4 gap-2 font-theSeasons xl:text-base text-sm'>
-          {props.paragrafy.map((paragraf, i) => (
-            <motion.p variants={parItem} key={i} className='whitespace-pre-line w-full' dangerouslySetInnerHTML={{__html: formatText(paragraf.tekst)}}></motion.p>
-          ))}
-          </motion.div>
-          {props.regulamin && (
-            <motion.div variants={container} initial='hidden' whileInView='show' exit='exit' viewport={{ once: true, amount: 0.5}} className='w-full h-auto flex justify-start items-center font-theSeasons xl:text-base text-sm mt-2'>
-              {props.regulamin.map((reg, i) => (
-                <motion.p variants={parItem} key={i}>{replaceLinksInText(reg.tekst, reg.linki)}</motion.p>
+        <motion.section variants={containerSec} initial='hidden' whileInView='show' exit='exit' viewport={{ once: true, amount: 0.5 }} className={`sm:w-1/2 w-full flex flex-col gap-5 relative justify-center items-center overflow-y-hidden`}>
+          <div
+            className='sm:w-full w-full h-auto sm:py-10 py-5 px-5 gap-5 flex flex-col overflow-y-scroll' ref={sectionRef} onTouchStart={handleTouchStart}
+          >
+            {userBottom &&
+              <button ref={sectionRef2} onTouchStart={handleTouchStart} className='absolute cursor-pointer top-2 left-1/2 -translate-x-1/2 w-[60px] h-[4px] bg-[#777] rounded-2xl'></button>
+            }
+            <AnimatedText2
+              text={props.tytul}
+              anDelay={0.45}
+              styling={'xl:text-[26px] leading-[2rem] lg:text-xl text-lg font-theSeasons2 text-center font-bold tracking-widest flex flex-wrap justify-center items-center'}
+              className=''
+            />
+            <motion.div
+              variants={container}
+              initial='hidden'
+              whileInView='show'
+              exit='exit'
+              viewport={{ once: true, amount: 0.5 }}
+              className='w-full sm:mt-5 mt-1 h-auto flex flex-col justify-center items-center text-start lg:gap-4 gap-2 font-theSeasons xl:text-base text-sm'
+            >
+              {props.paragrafy.map((paragraf, i) => (
+                <motion.p
+                  variants={parItem}
+                  key={i}
+                  className='whitespace-pre-line w-full'
+                  dangerouslySetInnerHTML={{ __html: formatText(paragraf.tekst) }}
+                ></motion.p>
               ))}
             </motion.div>
-          )}
-          <motion.div variants={container} initial='hidden' whileInView='show' exit='exit' viewport={{ once: true, amount: 0.5}} className='w-full h-auto sm:bg-inherit bg-[#f3f4f6aa] backdrop-blur-sm sm:backdrop-filter-none backdrop-filter flex sm:justify-end sticky bottom-0 left-1/2 py-2 rounded-md justify-center items-center'>
-            <motion.a variants={parItem} href="https://www.facebook.com/mauvebeautypl/?locale=pl_PL"><button className='uppercase tracking-widest bg-[#cdbebf] text-[#fff] hover:scale-105 duration-200 sm:text-lg text-sm px-5 py-2 font-medium cursor-pointer font-klein'>Umów się</button></motion.a>
-          </motion.div>
+            {props.regulamin && (
+              <motion.div
+                variants={container}
+                initial='hidden'
+                whileInView='show'
+                exit='exit'
+                viewport={{ once: true, amount: 0.5 }}
+                className='w-full h-auto flex justify-start items-center font-theSeasons xl:text-base text-sm mt-2'
+              >
+                {props.regulamin.map((reg, i) => (
+                  <motion.p variants={parItem} key={i}>
+                    {replaceLinksInText(reg.tekst, reg.linki)}
+                  </motion.p>
+                ))}
+              </motion.div>
+            )}
+            <motion.div
+              variants={container}
+              initial='hidden'
+              whileInView='show'
+              exit='exit'
+              viewport={{ once: true, amount: 0.5 }}
+              className='w-full h-auto sm:bg-inherit bg-[#f3f4f6aa] sm:drop-shadow-none drop-shadow-lg flex sm:justify-end sticky bottom-0 left-1/2 sm:py-2 py-0 rounded-md justify-center items-center'
+            >
+              <motion.a
+                variants={parItem}
+                href='https://www.facebook.com/mauvebeautypl/?locale=pl_PL'
+                className='sm:w-auto w-full bg-[#cdbebf] text-center py-1 sm:drop-shadow-lg drop-shadow-none'
+              >
+                <button className='uppercase tracking-widest text-[#fff] hover:scale-105 duration-200 sm:text-lg text-sm px-5 py-2 font-medium cursor-pointer font-klein'>
+                  Umów się
+                </button>
+              </motion.a>
+            </motion.div>
+          </div>
         </motion.section>
       </motion.section>
     </section>

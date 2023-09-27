@@ -78,7 +78,7 @@ export default function About() {
           </motion.div>
         </section>
           <motion.section initial={cardVariants.offscreen} whileInView={cardVariants.onscreen} viewport={{ once: true, amount: 0.5 }} className='sm:w-1/2 w-full flex justify-center items-center sm:py-0 py-5'>
-            <Image src={supabaseImport(aboutDane[0].zdjecie)} width={330} height={480} alt='Profile Picture' className='xl:h-[100%] sm:h-[80%] h-[300px] w-auto'/>
+            <Image src={supabaseImport(aboutDane[0].zdjecie)} width={330} height={480} alt='Profile Picture' className='xl:h-[100%] sm:h-[80%] h-[300px] w-auto aspect-auto'/>
           </motion.section>
       </section>
       ) : (

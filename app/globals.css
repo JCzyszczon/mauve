@@ -142,16 +142,7 @@ body {
   }
 
   ::-webkit-scrollbar-horizontal {
-    height: 8px;
-  }
-
-  ::-webkit-scrollbar-thumb:horizontal {
-    background-color: #000;
-    border-radius: 4px;
-  }
-
-  ::-webkit-scrollbar-track:horizontal {
-    background: transparent;
+    height: 4px;
   }
 }
 
