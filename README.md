@@ -15,7 +15,9 @@
     -   [Description](#the-challenge)
     -   [Screenshots - Landing Page](#screenshots-landing)
     -   [Screenshots - Offer](#screenshots-offer)
-    -   [Screenshots - Admin](#screenshots-admin)
+    -   [Screenshots - Admin Panel](#screenshots-admin-panel)
+    -   [Screenshots - Admin Offers](#screenshots-admin-offers)
+    -   [Screenshots - Admin Edit Offer](#screenshots-admin-edit)
     -   [Links](#links)
 -   [My process](#my-process)
     -   [Built with](#built-with)
@@ -37,36 +39,62 @@ In addition to presenting the company's offer in a stylish and simple design, th
 <table>
     <tr>
         <td>
-            <img src="./app/img/mauve-zrzut1.png" alt="Desktop solution" width="100%" title="Desktop solution"/>
+            <img src="./app/img/mauve-landing.png" alt="Desktop solution" width="100%" title="Desktop solution"/>
         </td>
         <td>
-            <img src="./app/img/mauve-zrzut1-mobile.png" alt="Mobile solution" title="Mobile solution" width="100%" />
-        </td>
-    </tr>
-</table>
-
-### Screenshots - Offer
-
-<table>
-    <tr>
-        <td>
-            <img src="./app/img/mauve-zrzut2.png" alt="Desktop solution" width="100%" title="Desktop solution"/>
-        </td>
-        <td>
-            <img src="./app/img/mauve-zrzut2-mobile.png" alt="Mobile solution" title="Mobile solution" width="100%" />
+            <img src="./app/img/mauve-landing-mobile.png" alt="Mobile solution" title="Mobile solution" width="100%" />
         </td>
     </tr>
 </table>
 
-### Screenshots - Admin
+### Screenshots - Offer Slide
 
 <table>
     <tr>
         <td>
-            <img src="./app/img/mauve-zrzut3.png" alt="Desktop solution" width="100%" title="Desktop solution"/>
+            <img src="./app/img/mauve-offer.png" alt="Desktop solution" width="100%" title="Desktop solution"/>
         </td>
         <td>
-            <img src="./app/img/mauve-zrzut3-mobile.png" alt="Mobile solution" title="Mobile solution" width="100%" />
+            <img src="./app/img/mauve-offer-mobile.png" alt="Mobile solution" title="Mobile solution" width="100%" />
+        </td>
+    </tr>
+</table>
+
+### Screenshots - Admin Panel
+
+<table>
+    <tr>
+        <td>
+            <img src="./app/img/mauve-admin.png" alt="Desktop solution" width="100%" title="Desktop solution"/>
+        </td>
+        <td>
+            <img src="./app/img/mauve-admin-mobile.png" alt="Mobile solution" title="Mobile solution" width="100%" />
+        </td>
+    </tr>
+</table>
+
+### Screenshots - Admin Offers
+
+<table>
+    <tr>
+        <td>
+            <img src="./app/img/mauve-admin-offer.png" alt="Desktop solution" width="100%" title="Desktop solution"/>
+        </td>
+        <td>
+            <img src="./app/img/mauve-admin-offer-mobile.png" alt="Mobile solution" title="Mobile solution" width="100%" />
+        </td>
+    </tr>
+</table>
+
+### Screenshots - Admin Edit Offer
+
+<table>
+    <tr>
+        <td>
+            <img src="./app/img/mauve-admin-edit.png" alt="Desktop solution" width="100%" title="Desktop solution"/>
+        </td>
+        <td>
+            <img src="./app/img/mauve-admin-edit-mobile.png" alt="Mobile solution" title="Mobile solution" width="100%" />
         </td>
     </tr>
 </table>
