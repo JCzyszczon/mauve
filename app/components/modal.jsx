@@ -334,7 +334,7 @@ function Modal({ closeModal, props }) {
               whileInView='show'
               exit='exit'
               viewport={{ once: true, amount: 0.5 }}
-              className='w-full h-auto sm:bg-inherit bg-[#f3f4f6aa] sm:drop-shadow-none drop-shadow-lg flex sm:justify-end sticky bottom-0 left-1/2 sm:py-2 py-0 rounded-md justify-center items-center'
+              className='w-full h-auto sm:bg-inherit bg-[#f3f4f6aa] sm:drop-shadow-none drop-shadow-lg flex sm:justify-end sticky bottom-0 left-0 right-0 sm:py-2 py-0 rounded-md justify-center items-center'
             >
               <motion.a
                 variants={parItem}

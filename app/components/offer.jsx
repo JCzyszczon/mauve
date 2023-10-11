@@ -84,7 +84,7 @@ export default function Offer() {
                 <section className='w-full flex flex-col justify-center items-center'>
                     <h2 className='font-theSeasons2 lg:text-[36px] text-3xl tracking-[0.2em] font-bold uppercase text-center pt-10'>Oferta</h2>
                     <section className='w-full flex sm:px-[5%] px-[5%]'>
-                        <Swiper slidesPerView={elements} spaceBetween={space} className='mySwiper'>
+                        <Swiper slidesPerView={elements} spaceBetween={space} className='mySwiper !overflow-hidden'>
                         {offerDane.map((item, index) => (
                             <SwiperSlide key={item.tytul} className='offerSlide drop-shadow-xl group' onClick={() => getSlide(item, index)}>
                                 <motion.div variants={swiperItem} initial='hidden' whileInView='show' transition={{ duration: 0.3, delay: index * 0.1 }} viewport={{ once: true, amount: 0.5 }} className='swiperSlide2'>
