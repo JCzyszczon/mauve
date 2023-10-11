@@ -5,6 +5,7 @@ import Offer from './components/offer';
 import ProgressBar from './components/progressbar';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
+import FacebookMsg from './components/facebookMsg';
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <About/>
       </main>
       <Footer/>
+      <FacebookMsg/>
     </>
   )
 }
