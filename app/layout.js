@@ -19,12 +19,12 @@ export const metadata = {
   description: "Profesjonalny makijaż permanentny brwi w Krakowie. Odwiedź nas już dziś i podkreśl swoje piękno w Mauve.",
   keywords: ['Makijaż', 'Makijaż permanentny', 'Makijaż permanentny brwi', 'Usługi kosmetyczne', 'Uroda', 'Kraków', 'Salon kosmetyczny Kraków', 'Makijaż Kraków', 'Makijaż permanentny brwi Kraków', 'Makijaż permanentny Kraków', 'Makijaż okolicznościowy', 'Brwi', 'Mauve.pl', 'Mauve', 'Mauve Beauty', 'Dagmara', 'Dagmara Misiewicz', 'Jordanów', 'Małopolska', 'Makijaż ślubny', 'Makijaż próbny ślubny', 'Laminacja z koloryzacją i regulacją brwi', 'Koloryzacja z regulacją brwi', 'Laminacja z regulacją brwi'],
   alternates: {
-    canonical: 'https://mauve.pl',
+    canonical: 'https://www.mauve.pl',
   },
   openGraph: {
     title: 'Profesjonalny makijaż na wyjątkowe okazje | Mauve.pl',
     description: 'Odwiedź nas już dziś w Krakowie!',
-    url: 'https://mauve.pl/',
+    url: 'https://www.mauve.pl',
     siteName: 'Mauve',
     images: [
       {
@@ -39,7 +39,7 @@ export const metadata = {
         alt: 'Mauve Image',
       },
     ],
-    locale: 'en_US',
+    locale: 'pl_PL',
     type: 'website',
   },
 }
