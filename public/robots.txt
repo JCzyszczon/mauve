@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Sitemap: https://www.mauve.pl/sitemap.xml
