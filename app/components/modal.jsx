@@ -250,7 +250,7 @@ function Modal({ closeModal, props }) {
           <Swiper loop={true} spaceBetween={10} thumbs={{ swiper: thumbsSwiper }} modules={[FreeMode, Navigation, Thumbs]} className="!w-full !flex !justify-center sm:!h-full !h-auto !items-center bg-gray-100 cursor-pointer !rounded-lg !overflow-hidden">
           {props.zdjecia.map((zdjecie, index) => (
             <SwiperSlide onClick={() => getSlide(props.zdjecia, props.id, index, false)} key={'Główne' + index} className={`!w-full !flex !relative !justify-center !duration-500 !items-center sm:!h-full !h-auto`}>
-              <Image src={supabaseImport(`${props.id}/${zdjecie.zdj}`)} width={730} height={490} quality={100} alt={index} onLoadingComplete={handleImageLoad} className={`sm:h-full w-auto cursor-pointer 2xl:object-cover sm:object-contain duration-500 object-cover ${userScroll ? 'h-[150px]' : 'h-[300px]'}`}/>
+              <Image src={supabaseImport(`${props.id}/${zdjecie.zdj}`)} width={730} height={490} alt={index} onLoadingComplete={handleImageLoad} className={`sm:h-full w-auto cursor-pointer 2xl:object-cover sm:object-contain duration-500 object-cover ${userScroll ? 'h-[150px]' : 'h-[300px]'}`}/>
               {!imageLoaded &&
                 <div className='w-full h-full flex justify-center items-center absolute left-0 top-0 bg-gray-100'>
                   <svg className="mr-3 h-6 w-6 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -265,7 +265,7 @@ function Modal({ closeModal, props }) {
           <Swiper onSwiper={setThumbsSwiper} loop={true} spaceBetween={10} slidesPerView={4} freeMode={true} watchSlidesProgress={true} modules={[FreeMode, Navigation, Thumbs]} className={`mySwiper3 !w-full !duration-500 !justify-center !items-center bg-gray-100 !rounded-lg sm:!max-h-[150px] sm:!h-auto !max-h-none ${userScroll ? '!h-0' : '!h-[100px]'}`}>
           {props.zdjecia.map((zdjecie, index) => (
               <SwiperSlide key={index} className='modalSlide2 !bg-gray-200 !cursor-pointer !flex !justify-center !relative !items-center overflow-hidden'>
-                <Image src={supabaseImport(`${props.id}/${zdjecie.zdj}`)} width={730} height={490} alt={'Zdjęcie' + index} onLoadingComplete={handleImageLoad2} className='w-auto h-full sm:object-cover object-cover'/>
+                <Image src={supabaseImport(`${props.id}/${zdjecie.zdj}`)} width={204} height={150} alt={'Zdjęcie' + index} onLoadingComplete={handleImageLoad2} className='w-auto h-full sm:object-cover object-cover'/>
                 {!imageLoaded2 &&
                 <div className='w-full h-full flex justify-center items-center absolute left-0 top-0 bg-gray-100'>
                   <svg className="mr-3 h-6 w-6 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

@@ -130,8 +130,8 @@ export default function Footer() {
             <footer className='w-full h-auto sm:px-10 px-5 pt-20 sm:pb-10 pb-5 relative drop-shadow-md'>
                 <Image src={sharedImage} alt="Background Image" fill={true} quality={100} className="bg-no-repeat bg-cover z-[-1]"/>
                 <span className='absolute sm:right-10 right-5 top-5 flex justify-center items-center gap-1'>
-                    <a href="https://www.facebook.com/mauvebeautypl/?locale=pl_PL" target='_blank'><AiFillFacebook className='sm:text-4xl text-3xl text-[#705555] hover:opacity-80 duration-200'/></a>
-                    <a href="https://www.instagram.com/mauve.pl/" target='_blank'><AiOutlineInstagram className='sm:text-4xl text-3xl text-[#705555] hover:opacity-80 duration-200'/></a>
+                    <a href="https://www.facebook.com/mauvebeautypl/?locale=pl_PL" aria-label='Odwiedź nas na Fb!' target='_blank'><AiFillFacebook className='sm:text-4xl text-3xl text-[#705555] hover:opacity-80 duration-200'/></a>
+                    <a href="https://www.instagram.com/mauve.pl/" aria-label='Odwiedź nas na Ig!' target='_blank'><AiOutlineInstagram className='sm:text-4xl text-3xl text-[#705555] hover:opacity-80 duration-200'/></a>
                 </span>
                 <span className='absolute sm:left-10 left-5 top-6 flex justify-center items-center'>
                     <Link href='/regulamin' scroll={true} className='sm:text-lg text-sm font-klein font-medium hover:opacity-80 duration-200 uppercase text-[#705555]'>Regulaminy</Link>

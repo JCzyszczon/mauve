@@ -101,9 +101,9 @@ export default function News() {
           <SwiperSlide key={item.tytul} className='swiperSlide'>
             <motion.section variants={cardVariants} initial='offscreen' whileInView='onscreen' viewport={{ once: true, amount: 0.5 }} className='sm:w-1/2 w-full flex justify-center items-center'>
               {item.zdjecie ? (
-                <Image src={supabaseImport(item.zdjecie)} width={1200} height={800} quality={100} alt={`Article Picture - ${item.tytul}`} className='sm:h-[100%] aspect-video h-full sm:w-auto w-[100%] object-cover object-center'/>
+                <Image src={supabaseImport(item.zdjecie)} width={730} height={480} alt={`Article Picture - ${item.tytul}`} className='sm:h-[100%] aspect-video h-full sm:w-auto w-[100%] object-cover object-center'/>
               ) : (
-                <Image src={BasicPhoto} width={1200} height={800} alt={`Article Picture - ${item.tytul}`} placeholder='blur' className='sm:h-[100%] aspect-video h-full sm:w-auto w-[100%] object-cover object-center'/>
+                <Image src={BasicPhoto} width={730} height={480} alt={`Article Picture - ${item.tytul}`} placeholder='blur' className='sm:h-[100%] aspect-video h-full sm:w-auto w-[100%] object-cover object-center'/>
               )}
             </motion.section>
             <section className='sm:w-1/2 w-full flex flex-col justify-center items-center 2xl:py-0 sm:py-10 pb-10 pt-5'>
