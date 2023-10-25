@@ -122,11 +122,6 @@ export default function Footer() {
         },
     };
 
-    const mobile = {
-        hidden: {},
-        show: {},
-    }
-
     const container = {
         hidden: {
             y: '-100vh',
@@ -161,7 +156,7 @@ export default function Footer() {
                     <p className='font-theSeasons font-light lg:text-base sm:text-sm text-sm text-center sm:flex hidden'>Zostaw swój adres email, a będę na bieżąco<br/>informować Cię o nowościach w ofercie i promocjach.</p>
                     <form onSubmit={handleSubmit} className='w-full flex flex-col justify-center items-center text-center md:gap-5 gap-4'>
                         <input type="email" name="email" id="email" placeholder='Podaj swój e-mail' value={email} onChange={(e) => setEmail(e.target.value)} className='bg-mainBackground text-[#000] placeholder:text-[#555] placeholder:uppercase bg-no-repeat bg-cover text-center sm:text-base text-xs border-2 border-[#cdbebf] outline-none focus:border-[#ab9c9d] duration-200 placeholder:tracking-[0.2em] tracking-widest px-4 py-2 lg:w-2/5 md:w-3/5 w-full font-klein'/>
-                        <motion.button initial={!isMobile ? buttonVariants.offscreen : ''} whileInView={!isMobile ? buttonVariants.onscreen : ''} viewport={{ once: true, amount: 0.5 }} type="submit" className='sm:w-[134px] w-[112px] uppercase tracking-widest bg-[#cdbebf] text-[#fff] hover:scale-105 duration-200 sm:text-base text-xs py-2 font-medium cursor-pointer font-klein'>
+                        <motion.button initial={buttonVariants.offscreen} whileInView={buttonVariants.onscreen} viewport={{ once: true, amount: 0.5 }} type="submit" className='sm:w-[134px] w-[112px] uppercase tracking-widest bg-[#cdbebf] text-[#fff] hover:scale-105 duration-200 sm:text-base text-xs py-2 font-medium cursor-pointer font-klein'>
                         {loading ? (
                             <div className='w-full flex justify-center items-center'>
                                 <svg className="mr-3 h-6 w-6 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
