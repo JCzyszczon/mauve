@@ -15,7 +15,7 @@ export default function Home() {
         <ProgressBar/>
         <Title/>
         <News/>
-        {/*<Offer/>*/}
+        <Offer/>
         <About/>
       </main>
       <Footer/>
