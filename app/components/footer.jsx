@@ -19,6 +19,7 @@ export default function Footer() {
     const [messageTimer, setMessageTimer] = useState(null);
     const [translation, setTranslation] = useState('0%');
     const [loading, setLoading] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
     const handleClick = () => {
         setModalState(false);
@@ -95,6 +96,19 @@ export default function Footer() {
         }
     };
 
+    useEffect(() => {
+        function handleResize() {
+          if (window.innerWidth <= 1024) {
+            setIsMobile(true);
+          } else {
+            setIsMobile(false);
+          }
+        }
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     const buttonVariants = {
         offscreen: {
             backgroundColor: '#705555',
@@ -106,7 +120,12 @@ export default function Footer() {
                 duration: 0.8,
             },
         },
-    }; 
+    };
+
+    const mobile = {
+        hidden: {},
+        show: {},
+    }
 
     const container = {
         hidden: {
@@ -137,12 +156,12 @@ export default function Footer() {
                     <Link href='/regulamin' scroll={true} className='sm:text-lg text-sm font-klein font-medium hover:opacity-80 duration-200 uppercase text-[#705555]'>Regulaminy</Link>
                 </span>
                 <section className='w-full h-auto flex flex-col justify-center items-center md:gap-5 gap-4'>
-                    <AnimatedText2 text={'Bądźmy w kontakcie!'} state={true} styling={'uppercase lg:text-2xl sm:text-xl text-lg font-theSeasons2 tracking-widest text-center font-bold'}/>
+                    {isMobile ? <AnimatedText2 text={'Bądźmy w kontakcie!'} state={true} styling={'uppercase lg:text-2xl sm:text-xl text-lg font-theSeasons2 tracking-widest text-center font-bold'}/> : <h3 className='uppercase lg:text-2xl sm:text-xl text-lg font-theSeasons2 tracking-widest text-center font-bold'></h3> }
                     <span className='md:w-[150px] w-[100px] h-[1px] bg-[#000]'></span>
                     <p className='font-theSeasons font-light lg:text-base sm:text-sm text-sm text-center sm:flex hidden'>Zostaw swój adres email, a będę na bieżąco<br/>informować Cię o nowościach w ofercie i promocjach.</p>
                     <form onSubmit={handleSubmit} className='w-full flex flex-col justify-center items-center text-center md:gap-5 gap-4'>
                         <input type="email" name="email" id="email" placeholder='Podaj swój e-mail' value={email} onChange={(e) => setEmail(e.target.value)} className='bg-mainBackground text-[#000] placeholder:text-[#555] placeholder:uppercase bg-no-repeat bg-cover text-center sm:text-base text-xs border-2 border-[#cdbebf] outline-none focus:border-[#ab9c9d] duration-200 placeholder:tracking-[0.2em] tracking-widest px-4 py-2 lg:w-2/5 md:w-3/5 w-full font-klein'/>
-                        <motion.button initial={buttonVariants.offscreen} whileInView={buttonVariants.onscreen} viewport={{ once: true, amount: 0.5 }} type="submit" className='sm:w-[134px] w-[112px] uppercase tracking-widest bg-[#cdbebf] text-[#fff] hover:scale-105 duration-200 sm:text-base text-xs py-2 font-medium cursor-pointer font-klein'>
+                        <motion.button initial={!isMobile ? buttonVariants.offscreen : ''} whileInView={!isMobile ? buttonVariants.onscreen : ''} viewport={{ once: true, amount: 0.5 }} type="submit" className='sm:w-[134px] w-[112px] uppercase tracking-widest bg-[#cdbebf] text-[#fff] hover:scale-105 duration-200 sm:text-base text-xs py-2 font-medium cursor-pointer font-klein'>
                         {loading ? (
                             <div className='w-full flex justify-center items-center'>
                                 <svg className="mr-3 h-6 w-6 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

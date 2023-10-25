@@ -16,6 +16,7 @@ const supabaseImport = (image) => {
 export default function About() {
 
   const [aboutDane, setAboutDane] = useState();
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,7 +32,20 @@ export default function About() {
     }
 
     fetchData()
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth <= 1024) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
+    }
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const cardVariants = {
     offscreen: {
@@ -56,6 +70,11 @@ export default function About() {
       }
     }
   }
+
+  const mobile = {
+    hidden: {},
+    show: {},
+  }
   
   const item = {
     hidden: { opacity: 0, x: -10 },
@@ -71,13 +90,13 @@ export default function About() {
       <section className="w-full flex sm:flex-row flex-col gap-0">
         <section className='sm:w-1/2 w-full flex flex-col justify-center items-center xl:px-0 px-5 xl:py-0 sm:py-5 pt-10'>
           <Image src={MauveLogo} alt='Mauve Logo' className='sm:w-[160px] w-[150px] h-auto mb-5'/>
-          <motion.div variants={container} initial='hidden' whileInView='show' viewport={{ once: true, amount: 0.5 }} className='w-full h-auto flex flex-col justify-center items-center gap-3'>
+          <motion.div variants={!isMobile ? container : mobile} initial='hidden' whileInView='show' viewport={{ once: true, amount: 0.5 }} className='w-full h-auto flex flex-col justify-center items-center gap-3'>
             {aboutDane[0].paragrafy.map((paragraf, i) => (
               <motion.p variants={item} key={i} className='whitespace-pre-line xl:text-base sm:text-sm text-sm sm:text-start text-justify font-theSeasons font-light' dangerouslySetInnerHTML={{__html: paragraf.tekst}}></motion.p>
             ))}
           </motion.div>
         </section>
-          <motion.section initial={cardVariants.offscreen} whileInView={cardVariants.onscreen} viewport={{ once: true, amount: 0.5 }} className='sm:w-1/2 w-full flex justify-center items-center sm:py-0 py-5'>
+          <motion.section initial={!isMobile ? cardVariants.offscreen : ''} whileInView={!isMobile ? cardVariants.onscreen : ''} viewport={{ once: true, amount: 0.5 }} className='sm:w-1/2 w-full flex justify-center items-center sm:py-0 py-5'>
             <Image src={supabaseImport(aboutDane[0].zdjecie)} width={330} height={480} alt='Profile Picture' className='xl:h-[100%] sm:h-[80%] h-[300px] xl:pl-[10%] pl-0 w-auto aspect-auto'/>
           </motion.section>
       </section>

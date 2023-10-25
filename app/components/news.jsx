@@ -21,6 +21,7 @@ export default function News() {
 
   const [fetchError, setFetchError] = useState(null);
   const [offerDane, setOfferDane] = useState();
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,6 +64,19 @@ export default function News() {
     });
   };
 
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth <= 1024) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
+    }
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const cardVariants = {
     offscreen: {
       filter: 'blur(2px)',
@@ -86,6 +100,11 @@ export default function News() {
       }
     }
   }
+
+  const mobile = {
+    hidden: {},
+    show: {},
+  }
   
   const SlideItem = {
     hidden: { opacity: 0, x: -10 },
@@ -99,7 +118,7 @@ export default function News() {
         <Swiper spaceBetween={10} loop={true} pagination={{clickable: true,}} modules={[Autoplay,Pagination]} autoplay={{delay: 15000, disableOnInteraction: false,}} className='w-full'>
         {offerDane.slice(0,3).map((item, index) => (
           <SwiperSlide key={item.tytul} className='swiperSlide'>
-            <motion.section variants={cardVariants} initial='offscreen' whileInView='onscreen' viewport={{ once: true, amount: 0.5 }} className='sm:w-1/2 w-full flex justify-center items-center'>
+            <motion.section variants={!isMobile ? cardVariants : mobile} initial='offscreen' whileInView='onscreen' viewport={{ once: true, amount: 0.5 }} className='sm:w-1/2 w-full flex justify-center items-center'>
               {item.zdjecie ? (
                 <Image src={supabaseImport(item.zdjecie)} width={730} height={480} alt={`Article Picture - ${item.tytul}`} className='sm:h-[100%] aspect-video h-full sm:w-auto w-[100%] object-cover object-center'/>
               ) : (
@@ -107,11 +126,11 @@ export default function News() {
               )}
             </motion.section>
             <section className='sm:w-1/2 w-full flex flex-col justify-center items-center 2xl:py-0 sm:py-10 pb-10 pt-5'>
-              {item.tytul && <AnimatedText2 text={item.tytul} state={false} styling={'xl:text-[26px] lineChange2 lg:text-xl text-lg font-theSeasons2 text-center font-bold xl:px-14 px-2 tracking-widest flex flex-wrap justify-center items-center'}/>}
-              {item.podtytul && <motion.h3 variants={SlideItem} initial='hidden' whileInView='show' viewport={{ once: false, amount: 0.5 }} className='text-center font-theSeasons2 lg:text-xl text-base mt-2 xl:px-10 px-2'>{item.podtytul}</motion.h3>}
-              <motion.div variants={container} initial='hidden' whileInView='show' viewport={{ once: true, amount: 0.5 }} className='flex flex-col justify-center sm:items-center items-start sm:text-center text-start font-theSeasons font-light xl:text-base text-sm w-full sm:mt-6 mt-3 gap-2 xl:px-10 px-5'>
+              {item.tytul && !isMobile ? <AnimatedText2 text={item.tytul} state={false} styling={'xl:text-[26px] lineChange2 lg:text-xl text-lg font-theSeasons2 text-center font-bold xl:px-14 px-2 tracking-widest flex flex-wrap justify-center items-center'}/> : <h2 className='xl:text-[26px] lineChange2 lg:text-xl text-lg font-theSeasons2 text-center font-bold xl:px-14 px-2 tracking-widest flex flex-wrap justify-center items-center'></h2>}
+              {item.podtytul && <motion.h3 variants={!isMobile ? SlideItem : mobile} initial='hidden' whileInView='show' viewport={{ once: false, amount: 0.5 }} className='text-center font-theSeasons2 lg:text-xl text-base mt-2 xl:px-10 px-2'>{item.podtytul}</motion.h3>}
+              <motion.div variants={!isMobile ? container : mobile} initial='hidden' whileInView='show' viewport={{ once: true, amount: 0.5 }} className='flex flex-col justify-center sm:items-center items-start sm:text-center text-start font-theSeasons font-light xl:text-base text-sm w-full sm:mt-6 mt-3 gap-2 xl:px-10 px-5'>
               {item.paragrafy && item.paragrafy.map((paragraf, i) => (
-                <motion.p variants={SlideItem} key={i}>{replaceLinksInText(paragraf.tekst, paragraf.linki)}</motion.p>
+                <motion.p variants={!isMobile ? SlideItem : mobile} key={i}>{replaceLinksInText(paragraf.tekst, paragraf.linki)}</motion.p>
               ))}
               </motion.div>
               {item.przycisk && <button className='bg-[#cdbebf] px-5 py-2 mt-6 text-[#fff] font-klein xl:text-xl text-sm tracking-[0.2em] hover:scale-105 duration-200'><a href={item.linkPrzycisk} target='_blank'>{item.przycisk}</a></button>}
