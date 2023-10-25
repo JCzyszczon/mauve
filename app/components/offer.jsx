@@ -87,7 +87,7 @@ export default function Offer() {
                         <Swiper slidesPerView={elements} spaceBetween={space} className='mySwiper !overflow-hidden'>
                         {offerDane.map((item, index) => (
                             <SwiperSlide key={item.tytul} className='offerSlide drop-shadow-xl group' onClick={() => getSlide(item, index)}>
-                                <motion.div /*variants={swiperItem} initial='hidden' whileInView='show' transition={{ duration: 0.3, delay: index * 0.1 }} viewport={{ once: true, amount: 0.5 }}*/ className='swiperSlide2'>
+                                {/*<motion.div variants={swiperItem} initial='hidden' whileInView='show' transition={{ duration: 0.3, delay: index * 0.1 }} viewport={{ once: true, amount: 0.5 }} className='swiperSlide2'>*/}
                                 <h3 className='font-theSeasons2 lg:text-xl sm:text-lg text-base tracking-widest uppercase font-bold'>{item.tytul}</h3>
                                 {/*<div className='w-full h-auto flex flex-col justify-center items-center gap-5'>
                                     <div className='w-full h-auto flex justify-between items-center font-theSeasons2 text-sm'>
@@ -96,7 +96,7 @@ export default function Offer() {
                                     </div>
                                     <button className='uppercase tracking-widest bg-[#cdbebf] text-[#fff] group-hover:scale-105 duration-200 sm:text-base text-base px-5 py-1 font-medium cursor-pointer font-klein'>więcej</button>
                         </div>*/}
-                                </motion.div>
+                                {/*</motion.div>*/}
                             </SwiperSlide>
                         ))}
                         </Swiper>
