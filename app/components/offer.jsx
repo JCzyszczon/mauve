@@ -79,7 +79,7 @@ export default function Offer() {
     return (
     <>
         <section id='offer' className='w-full 2xl:min-h-[480px] min-h-fit 2xl:max-h-[480px] max-h-none flex sm:flex-row flex-col relative mb-16 drop-shadow-md'>
-            <Image src={sharedImage} priority={true} alt="Background Image" fill={true} quality={100} className="bg-no-repeat bg-cover z-[-1]"/>
+            <Image src={sharedImage} alt="Background Image" fill={true} quality={100} className="bg-no-repeat bg-cover z-[-1]"/>
             {offerDane ? (
                 <section className='w-full flex flex-col justify-center items-center'>
                     <h2 className='font-theSeasons2 lg:text-[36px] text-3xl tracking-[0.2em] font-bold uppercase text-center pt-10'>Oferta</h2>
@@ -87,7 +87,7 @@ export default function Offer() {
                         <Swiper slidesPerView={elements} spaceBetween={space} className='mySwiper !overflow-hidden'>
                         {offerDane.map((item, index) => (
                             <SwiperSlide key={item.tytul} className='offerSlide drop-shadow-xl group' onClick={() => getSlide(item, index)}>
-                                <motion.div /*variants={swiperItem} initial='hidden' whileInView='show' transition={{ duration: 0.3, delay: index * 0.1 }} viewport={{ once: true, amount: 0.5 }}*/ className='swiperSlide2'>
+                                <motion.div variants={swiperItem} initial='hidden' whileInView='show' transition={{ duration: 0.3, delay: index * 0.1 }} viewport={{ once: true, amount: 0.5 }} className='swiperSlide2'>
                                 <h3 className='font-theSeasons2 lg:text-xl sm:text-lg text-base tracking-widest uppercase font-bold'>{item.tytul}</h3>
                                 <div className='w-full h-auto flex flex-col justify-center items-center gap-5'>
                                     <div className='w-full h-auto flex justify-between items-center font-theSeasons2 text-sm'>

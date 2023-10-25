@@ -88,32 +88,32 @@ export default function Navbar() {
 
   return (
     <header className='w-full 2xl:min-h-[480px] min-h-fit 2xl:max-h-[480px] max-h-none flex sm:flex-row flex-col relative drop-shadow-md'>
-      <Image src={sharedImage} priority={true} alt="Background Image" fill={true} quality={100} className="bg-no-repeat bg-cover z-[-1]"/>
+      <Image src={sharedImage} alt="Background Image" fill={true} quality={100} className="bg-no-repeat bg-cover z-[-1]"/>
       <section className="w-full flex sm:flex-row flex-col-reverse sm:gap-0 gap-5">
-        <motion.section /*variants={cardVariants} initial='offscreen' whileInView='onscreen' viewport={{ once: true, amount: 0.5 }}*/ className='sm:w-1/2 w-full flex justify-center items-center'>
+        <motion.section variants={cardVariants} initial='offscreen' whileInView='onscreen' viewport={{ once: true, amount: 0.5 }} className='sm:w-1/2 w-full flex justify-center items-center'>
           <Image src={navPic} alt='Navbar Image' width={730} height={480} priority={true} className='sm:h-[100%] aspect-auto h-full sm:w-full w-[100%] object-cover object-center'/>
         </motion.section>
         <section className='sm:w-1/2 w-full flex flex-col relative justify-evenly items-center xl:pr-[5%] sm:pr-[3%] pr-0 sm:gap-0 gap-5'>
           <nav className='w-full flex justify-between items-center border-b border-[#705555] sm:pb-2 pb-3 pt-5 sm:px-0 px-5'>
             <Link href='/' scroll={true}><Image src={MauveLogo} quality={100} alt='Mauve' className='w-[120px]'/></Link>
-            <motion.ul /*variants={container} initial='hidden' whileInView='show' viewport={{ once: true, amount: 0.5 }}*/ className='w-auto h-auto lg:flex hidden justify-between items-center uppercase tracking-widest xl:text-base text-sm font-normal font-klein xl:gap-5 gap-3'>
-              <motion.li /*variants={item}*/ className='hover:text-[#705555] duration-200 cursor-pointer'><ScrollLink to='offer' smooth={true} duration={400} offset={-40}>Oferta</ScrollLink></motion.li>
-              <motion.li /*variants={item}*/ className='hover:text-[#705555] duration-200 cursor-pointer'><a href='https://www.instagram.com/mauve.pl/' target='_blank'>Portfolio</a></motion.li>
-              <motion.li /*variants={item}*/ className='hover:text-[#705555] duration-200 cursor-pointer'><ScrollLink to='about' smooth={true} duration={400} offset={-40}>O mnie</ScrollLink></motion.li>
+            <motion.ul variants={container} initial='hidden' whileInView='show' viewport={{ once: true, amount: 0.5 }} className='w-auto h-auto lg:flex hidden justify-between items-center uppercase tracking-widest xl:text-base text-sm font-normal font-klein xl:gap-5 gap-3'>
+              <motion.li variants={item} className='hover:text-[#705555] duration-200 cursor-pointer'><ScrollLink to='offer' smooth={true} duration={400} offset={-40}>Oferta</ScrollLink></motion.li>
+              <motion.li variants={item} className='hover:text-[#705555] duration-200 cursor-pointer'><a href='https://www.instagram.com/mauve.pl/' target='_blank'>Portfolio</a></motion.li>
+              <motion.li variants={item} className='hover:text-[#705555] duration-200 cursor-pointer'><ScrollLink to='about' smooth={true} duration={400} offset={-40}>O mnie</ScrollLink></motion.li>
             </motion.ul>
             {!nav ? <BiMenu className='lg:hidden flex text-2xl text-[#000]' onClick={handleClick}/> : <IoMdClose className='lg:hidden flex text-2xl text-[#000]' onClick={handleClick}/>}
           </nav>
           <AnimatePresence>
           {nav && 
-            <motion.section /*variants={mobile} initial="hidden" animate="show" exit="exit" viewport={{ once: false, amount: 1 }}*/ className='w-full bg-[#fff] absolute left-0 top-0 z-[10000]'>
+            <motion.section variants={mobile} initial="hidden" animate="show" exit="exit" viewport={{ once: false, amount: 1 }} className='w-full bg-[#fff] absolute left-0 top-0 z-[10000]'>
               <div className='w-full flex justify-between items-center border-b border-[#705555] pb-3 pt-5 px-5'>
                 <Link href='/' scroll={true}><Image src={MauveLogo} quality={100} alt='Mauve' className='w-[120px]'/></Link>
                 {!nav ? <BiMenu className='lg:hidden flex text-2xl text-[#000]' onClick={handleClick}/> : <IoMdClose className='lg:hidden flex text-2xl text-[#000]' onClick={handleClick}/>}
               </div>
-              <motion.ul /*variants={container} initial='hidden' whileInView='show' viewport={{ once: true, amount: 0.5 }}*/ className='w-full flex flex-col justify-center items-center uppercase tracking-widest text-base font-normal font-klein gap-3 py-10'>
-                <motion.li /*variants={item}*/ className='hover:text-[#705555] duration-200 cursor-pointer'><ScrollLink to='offer' onClick={() => setNav(false)} smooth={true} duration={400} offset={-40}>Oferta</ScrollLink></motion.li>
-                <motion.li /*variants={item}*/ className='hover:text-[#705555] duration-200 cursor-pointer'><a href='https://www.instagram.com/mauve.pl/' onClick={() => setNav(false)} target='_blank'>Portfolio</a></motion.li>
-                <motion.li /*variants={item}*/ className='hover:text-[#705555] duration-200 cursor-pointer'><ScrollLink to='about' onClick={() => setNav(false)} smooth={true} duration={400} offset={-40}>O mnie</ScrollLink></motion.li>
+              <motion.ul variants={container} initial='hidden' whileInView='show' viewport={{ once: true, amount: 0.5 }} className='w-full flex flex-col justify-center items-center uppercase tracking-widest text-base font-normal font-klein gap-3 py-10'>
+                <motion.li variants={item} className='hover:text-[#705555] duration-200 cursor-pointer'><ScrollLink to='offer' onClick={() => setNav(false)} smooth={true} duration={400} offset={-40}>Oferta</ScrollLink></motion.li>
+                <motion.li variants={item} className='hover:text-[#705555] duration-200 cursor-pointer'><a href='https://www.instagram.com/mauve.pl/' onClick={() => setNav(false)} target='_blank'>Portfolio</a></motion.li>
+                <motion.li variants={item} className='hover:text-[#705555] duration-200 cursor-pointer'><ScrollLink to='about' onClick={() => setNav(false)} smooth={true} duration={400} offset={-40}>O mnie</ScrollLink></motion.li>
               </motion.ul>
             </motion.section>
           }

@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <Navbar/>
       <main className='w-full h-auto'>
-        {/*<ProgressBar/>*/}
+        <ProgressBar/>
         <Title/>
         <News/>
         {/*<Offer/>*/}
