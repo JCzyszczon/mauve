@@ -79,7 +79,7 @@ export default function Offer() {
     return (
     <>
         <section id='offer' className='w-full 2xl:min-h-[480px] min-h-fit 2xl:max-h-[480px] max-h-none flex sm:flex-row flex-col relative mb-16 drop-shadow-md'>
-            <Image src={sharedImage} alt="Background Image" fill={true} quality={100} className="bg-no-repeat bg-cover z-[-1]"/>
+            <Image src={sharedImage} priority={true} alt="Background Image" fill={true} quality={100} className="bg-no-repeat bg-cover z-[-1]"/>
             {offerDane ? (
                 <section className='w-full flex flex-col justify-center items-center'>
                     <h2 className='font-theSeasons2 lg:text-[36px] text-3xl tracking-[0.2em] font-bold uppercase text-center pt-10'>Oferta</h2>

@@ -66,7 +66,7 @@ export default function About() {
 
   return (
     <section id='about' className='w-full 2xl:min-h-[480px] min-h-fit 2xl:max-h-[480px] max-h-none flex sm:flex-row flex-col relative mb-16 drop-shadow-md xl:px-[10%] px-0'>
-      <Image src={sharedImage} alt="Background Image" fill={true} quality={100} className="bg-no-repeat bg-cover z-[-1]"/>
+      <Image src={sharedImage} priority={true} alt="Background Image" fill={true} quality={100} className="bg-no-repeat bg-cover z-[-1]"/>
       {aboutDane ? (
       <section className="w-full flex sm:flex-row flex-col gap-0">
         <section className='sm:w-1/2 w-full flex flex-col justify-center items-center xl:px-0 px-5 xl:py-0 sm:py-5 pt-10'>
