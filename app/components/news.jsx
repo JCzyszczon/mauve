@@ -126,7 +126,7 @@ export default function News() {
               )}
             </motion.section>
             <section className='sm:w-1/2 w-full flex flex-col justify-center items-center 2xl:py-0 sm:py-10 pb-10 pt-5'>
-              {item.tytul && !isMobile ? <AnimatedText2 text={item.tytul} state={false} styling={'xl:text-[26px] lineChange2 lg:text-xl text-lg font-theSeasons2 text-center font-bold xl:px-14 px-2 tracking-widest flex flex-wrap justify-center items-center'}/> : <h2 className='xl:text-[26px] lineChange2 lg:text-xl text-lg font-theSeasons2 text-center font-bold xl:px-14 px-2 tracking-widest flex flex-wrap justify-center items-center'></h2>}
+              {item.tytul && !isMobile ? <AnimatedText2 text={item.tytul} state={false} styling={'xl:text-[26px] lineChange2 lg:text-xl text-lg font-theSeasons2 text-center font-bold xl:px-14 px-2 tracking-widest flex flex-wrap justify-center items-center'}/> : <h2 className='xl:text-[26px] lineChange2 lg:text-xl text-lg font-theSeasons2 text-center font-bold xl:px-14 px-2 tracking-widest flex flex-wrap justify-center items-center'>{item.tytul}</h2>}
               {item.podtytul && <motion.h3 variants={!isMobile ? SlideItem : mobile} initial='hidden' whileInView='show' viewport={{ once: false, amount: 0.5 }} className='text-center font-theSeasons2 lg:text-xl text-base mt-2 xl:px-10 px-2'>{item.podtytul}</motion.h3>}
               <motion.div variants={!isMobile ? container : mobile} initial='hidden' whileInView='show' viewport={{ once: true, amount: 0.5 }} className='flex flex-col justify-center sm:items-center items-start sm:text-center text-start font-theSeasons font-light xl:text-base text-sm w-full sm:mt-6 mt-3 gap-2 xl:px-10 px-5'>
               {item.paragrafy && item.paragrafy.map((paragraf, i) => (

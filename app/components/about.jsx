@@ -92,7 +92,7 @@ export default function About() {
           <Image src={MauveLogo} alt='Mauve Logo' className='sm:w-[160px] w-[150px] h-auto mb-5'/>
           <motion.div variants={!isMobile ? container : mobile} initial='hidden' whileInView='show' viewport={{ once: true, amount: 0.5 }} className='w-full h-auto flex flex-col justify-center items-center gap-3'>
             {aboutDane[0].paragrafy.map((paragraf, i) => (
-              <motion.p variants={item} key={i} className='whitespace-pre-line xl:text-base sm:text-sm text-sm sm:text-start text-justify font-theSeasons font-light' dangerouslySetInnerHTML={{__html: paragraf.tekst}}></motion.p>
+              <motion.p variants={!isMobile ? item : ''} key={i} className='whitespace-pre-line xl:text-base sm:text-sm text-sm sm:text-start text-justify font-theSeasons font-light' dangerouslySetInnerHTML={{__html: paragraf.tekst}}></motion.p>
             ))}
           </motion.div>
         </section>
