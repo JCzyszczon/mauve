@@ -242,6 +242,8 @@ function Modal({ closeModal, props }) {
   const mobile = {
     hidden: {},
     show: {},
+    offscreen: {},
+    onscreen: {},
   }
 
   const cardVariants = {
@@ -328,7 +330,7 @@ function Modal({ closeModal, props }) {
             >
               {props.paragrafy.map((paragraf, i) => (
                 <motion.p
-                  variants={parItem}
+                  variants={!isMobile ? parItem : ''}
                   key={i}
                   className='whitespace-pre-line w-full'
                   dangerouslySetInnerHTML={{ __html: formatText(paragraf.tekst) }}
@@ -345,7 +347,7 @@ function Modal({ closeModal, props }) {
                 className='w-full h-auto flex justify-start items-center font-theSeasons xl:text-base text-sm mt-2'
               >
                 {props.regulamin.map((reg, i) => (
-                  <motion.p variants={parItem} key={i}>
+                  <motion.p variants={!isMobile ? parItem : ''} key={i}>
                     {replaceLinksInText(reg.tekst, reg.linki)}
                   </motion.p>
                 ))}
@@ -360,7 +362,7 @@ function Modal({ closeModal, props }) {
               className='w-full h-auto sm:bg-inherit bg-[#f3f4f6aa] sm:drop-shadow-none drop-shadow-none flex sm:justify-end sticky bottom-0 left-0 right-0 sm:py-2 py-0 rounded-md justify-center items-center'
             >
               <motion.a
-                variants={parItem}
+                variants={!isMobile ? parItem : ''}
                 href='https://www.facebook.com/mauvebeautypl/?locale=pl_PL'
                 className='sm:w-auto w-full bg-[#cdbebf] text-center py-1 sm:drop-shadow-lg drop-shadow-none'
               >
