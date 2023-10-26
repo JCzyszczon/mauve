@@ -258,7 +258,7 @@ function Modal({ closeModal, props }) {
     <section onClick={handleOutsideClick} className={`w-screen h-screen bg-[#00000099] fixed left-0 top-0 z-[10000000000000] flex ${layoutOpen ? ('justify-start') : ('justify-end')} ${elements ? 'items-start' : 'items-center'} lg:py-[3%] py-[3%] lg:px-[5%] px-[3%] lg:drop-shadow-2xl drop-shadow-none overflow-y-scroll overflow-x-hidden`}>
       <motion.section variants={swiperItem} initial='hidden' whileInView='show' exit='exit' viewport={{ once: false, amount: 0 }} ref={modalRef} className='lg:w-[90%] sm:w-[95%] w-[100%] flex sm:flex-row flex-col bg-[#fff] sm:h-[700px] h-[96%] relative rounded-md overflow-hidden !box-border'>
         <button onClick={handleClose} className='absolute right-2 top-2 z-[100]'><IoMdClose className='text-3xl text-[#705555] hover:text-[#604444]'/></button>
-        <motion.section /*variants={cardVariants} initial='offscreen' whileInView='onscreen' viewport={{ once: true, amount: 0}}*/ className='sm:w-1/2 w-full sm:max-h-none max-h-1/2 duration-200 flex flex-col justify-center items-center p-2 gap-2'>
+        <motion.section variants={!isMobile ? cardVariants : ''} initial='offscreen' whileInView='onscreen' viewport={{ once: true, amount: 0}} className='sm:w-1/2 w-full sm:max-h-none max-h-1/2 duration-200 flex flex-col justify-center items-center p-2 gap-2'>
         {props.zdjecia.length >= 1 ? (
           <>
           <Swiper loop={true} spaceBetween={10} thumbs={{ swiper: thumbsSwiper }} modules={[FreeMode, Navigation, Thumbs]} className="!w-full !flex !justify-center sm:!h-full !h-auto !items-center bg-gray-100 cursor-pointer !rounded-lg !overflow-hidden">
@@ -296,7 +296,7 @@ function Modal({ closeModal, props }) {
           <Image onClick={() => getSlide(BasicPhoto, 0, true)} src={BasicPhoto} alt='Offer' className='object-cover h-full w-auto cursor-pointer rounded-lg'/>
         )}
         </motion.section>
-        <motion.section /*variants={containerSec} initial='hidden' whileInView='show' exit='exit' viewport={{ once: true, amount: 0.5 }}*/ className={`sm:w-1/2 w-full flex flex-col gap-5 relative justify-center items-center overflow-y-hidden`}>
+        <motion.section variants={!isMobile ? containerSec : ''} initial='hidden' whileInView='show' exit='exit' viewport={{ once: true, amount: 0.5 }} className={`sm:w-1/2 w-full flex flex-col gap-5 relative justify-center items-center overflow-y-hidden`}>
           <div
             className='sm:w-full w-full h-auto sm:py-10 py-5 px-5 gap-5 flex flex-col overflow-y-scroll' ref={sectionRef} onTouchStart={handleTouchStart}
           >
@@ -314,16 +314,16 @@ function Modal({ closeModal, props }) {
               <h2 className='xl:text-[26px] leading-[2rem] lg:text-xl text-lg font-theSeasons2 text-center font-bold tracking-widest flex flex-wrap justify-center items-center'>{props.tytul}</h2>
             )}
             <motion.div
-              /*variants={container}
+              variants={!isMobile ? container : ''}
               initial='hidden'
               whileInView='show'
               exit='exit'
-              viewport={{ once: true, amount: 0.5 }}*/
+              viewport={{ once: true, amount: 0.5 }}
               className='w-full sm:mt-5 mt-1 h-auto flex flex-col justify-center items-center text-start lg:gap-4 gap-2 font-theSeasons xl:text-base text-sm'
             >
               {props.paragrafy.map((paragraf, i) => (
                 <motion.p
-                  /*variants={parItem}*/
+                  variants={parItem}
                   key={i}
                   className='whitespace-pre-line w-full'
                   dangerouslySetInnerHTML={{ __html: formatText(paragraf.tekst) }}
@@ -332,30 +332,30 @@ function Modal({ closeModal, props }) {
             </motion.div>
             {props.regulamin && (
               <motion.div
-                /*variants={container}
+                variants={!isMobile ? container : ''}
                 initial='hidden'
                 whileInView='show'
                 exit='exit'
-                viewport={{ once: true, amount: 0.5 }}*/
+                viewport={{ once: true, amount: 0.5 }}
                 className='w-full h-auto flex justify-start items-center font-theSeasons xl:text-base text-sm mt-2'
               >
                 {props.regulamin.map((reg, i) => (
-                  <motion.p /*variants={parItem}*/ key={i}>
+                  <motion.p variants={parItem} key={i}>
                     {replaceLinksInText(reg.tekst, reg.linki)}
                   </motion.p>
                 ))}
               </motion.div>
             )}
             <motion.div
-              /*variants={container}
+              variants={!isMobile ? container : ''}
               initial='hidden'
               whileInView='show'
               exit='exit'
-              viewport={{ once: true, amount: 0.5 }}*/
+              viewport={{ once: true, amount: 0.5 }}
               className='w-full h-auto sm:bg-inherit bg-[#f3f4f6aa] sm:drop-shadow-none drop-shadow-none flex sm:justify-end sticky bottom-0 left-0 right-0 sm:py-2 py-0 rounded-md justify-center items-center'
             >
               <motion.a
-                /*variants={parItem}*/
+                variants={parItem}
                 href='https://www.facebook.com/mauvebeautypl/?locale=pl_PL'
                 className='sm:w-auto w-full bg-[#cdbebf] text-center py-1 sm:drop-shadow-lg drop-shadow-none'
               >
