@@ -88,10 +88,10 @@ export default function Navbar() {
 
   return (
     <header className='w-full 2xl:min-h-[480px] min-h-fit 2xl:max-h-[480px] max-h-none flex sm:flex-row flex-col relative lg:drop-shadow-md drop-shadow-none'>
-      <Image src={sharedImage} alt="Background Image" fill={true} quality={100} className="bg-no-repeat bg-cover z-[-1]"/>
+      <Image src={sharedImage} alt="Background Image" fill={true} quality={100} priority={true} className="bg-no-repeat bg-cover z-[-1]"/>
       <section className="w-full flex sm:flex-row flex-col-reverse sm:gap-0 gap-5">
         <motion.section variants={cardVariants} initial='offscreen' whileInView='onscreen' viewport={{ once: true, amount: 0.5 }} className='sm:w-1/2 w-full flex justify-center items-center'>
-          <Image src={navPic} alt='Navbar Image' width={730} height={480} priority={true} className='sm:h-[100%] aspect-auto h-full sm:w-full w-[100%] object-cover object-center'/>
+          <Image src={navPic} alt='Navbar Image' width={730} height={480} quality={100} priority={true} className='sm:h-[100%] aspect-auto h-full sm:w-full w-[100%] object-cover object-center'/>
         </motion.section>
         <section className='sm:w-1/2 w-full flex flex-col relative justify-evenly items-center xl:pr-[5%] sm:pr-[3%] pr-0 sm:gap-0 gap-5'>
           <nav className='w-full flex justify-between items-center border-b border-[#705555] sm:pb-2 pb-3 pt-5 sm:px-0 px-5'>
