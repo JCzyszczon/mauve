@@ -41,6 +41,7 @@ function Modal({ closeModal, props }) {
   const [userScroll, setUserScroll] = useState(false);
   const [elements, setElements] = useState(false);
   const [userBottom, setUserBottom] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     function handleResize() {
@@ -49,6 +50,19 @@ function Modal({ closeModal, props }) {
     } else {
         setElements(false);
     }
+    }
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth <= 1024) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
     }
     handleResize();
     window.addEventListener('resize', handleResize);
@@ -242,7 +256,7 @@ function Modal({ closeModal, props }) {
   return (
     <>
     <section onClick={handleOutsideClick} className={`w-screen h-screen bg-[#00000099] fixed left-0 top-0 z-[10000000000000] flex ${layoutOpen ? ('justify-start') : ('justify-end')} ${elements ? 'items-start' : 'items-center'} lg:py-[3%] py-[3%] lg:px-[5%] px-[3%] lg:drop-shadow-2xl drop-shadow-none overflow-y-scroll overflow-x-hidden`}>
-      <motion.section variants={swiperItem} initial='hidden' whileInView='show' exit='exit' viewport={{ once: false, amount: 0 }} ref={modalRef} className='lg:w-[90%] sm:w-[95%] w-[100%] flex sm:flex-row flex-col bg-[#fff] sm:h-[700px] h-[96%] relative rounded-md overflow-hidden !box-border'>
+      <motion.section /*variants={swiperItem} initial='hidden' whileInView='show' exit='exit' viewport={{ once: false, amount: 0 }}*/ ref={modalRef} className='lg:w-[90%] sm:w-[95%] w-[100%] flex sm:flex-row flex-col bg-[#fff] sm:h-[700px] h-[96%] relative rounded-md overflow-hidden !box-border'>
         <button onClick={handleClose} className='absolute right-2 top-2 z-[100]'><IoMdClose className='text-3xl text-[#705555] hover:text-[#604444]'/></button>
         <motion.section /*variants={cardVariants} initial='offscreen' whileInView='onscreen' viewport={{ once: true, amount: 0}}*/ className='sm:w-1/2 w-full sm:max-h-none max-h-1/2 duration-200 flex flex-col justify-center items-center p-2 gap-2'>
         {props.zdjecia.length >= 1 ? (
