@@ -54,7 +54,7 @@ function PhotoModal({ closeModal, props, photoId, openIndex, basicState }) {
   }
 
   return (
-    <motion.article variants={container} initial='hidden' whileInView='show' exit='exit' viewport={{ once: true, amount: 0}} onClick={handleOutsideClick} className='w-[100vw] h-screen bg-[#00000099] fixed left-0 top-0 z-[1000] flex justify-center items-center lg:py-0 py-[3%] lg:px-[5%] px-[3%] drop-shadow-2xl'>
+    <motion.article variants={container} initial='hidden' whileInView='show' exit='exit' viewport={{ once: true, amount: 0}} onClick={handleOutsideClick} className='w-[100vw] h-screen bg-[#00000099] fixed left-0 top-0 z-[100000000000000] flex justify-center items-center lg:py-0 py-[3%] lg:px-[5%] px-[3%] drop-shadow-2xl'>
       <button onClick={closeModal} className='absolute left-5 top-5 z-[200]'><BsArrowLeftShort className='text-5xl text-[#fff] hover:text-[#fff]'/></button>
       <motion.section drag='y' dragConstraints={{ top: 0, bottom: 0 }} onDrag={(event, info) => {if(isSwipeClosing && info.offset.y < -100) {setLayoutOpen(false);setCurrentOffset(info.offset.y);closeModal();} else {setCurrentOffset(info.offset.y)}}} onDragStart={() => setIsSwipeClosing(true)} onDragEnd={() => setIsSwipeClosing(false)} variants={swiperItem} className='md:w-[80%] sm:w-[90%] w-full z-[100] select-none flex justify-center items-center'>
         {props.length >= 1 && !basicState ? (
