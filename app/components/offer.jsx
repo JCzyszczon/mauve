@@ -84,19 +84,19 @@ export default function Offer() {
                 <section className='w-full flex flex-col justify-center items-center'>
                     <h2 className='font-theSeasons2 lg:text-[36px] text-3xl tracking-[0.2em] font-bold uppercase text-center pt-10'>Oferta</h2>
                     <section className='w-full flex sm:px-[5%] px-[5%]'>
-                        <Swiper slidesPerView={elements} spaceBetween={space} className='mySwiper !overflow-hidden'>
+                        <Swiper slidesPerView={elements} spaceBetween={space} className='!py-10 !px-0 !overflow-hidden'>
                         {offerDane.map((item, index) => (
-                            <SwiperSlide key={item.tytul} className='offerSlide drop-shadow-xl group' onClick={() => getSlide(item, index)}>
-                                {/*<motion.div variants={swiperItem} initial='hidden' whileInView='show' transition={{ duration: 0.3, delay: index * 0.1 }} viewport={{ once: true, amount: 0.5 }} className='swiperSlide2'>*/}
-                                <h3 className='font-theSeasons2 lg:text-xl sm:text-lg text-base tracking-widest uppercase font-bold'>{item.tytul}</h3>
-                                {/*<div className='w-full h-auto flex flex-col justify-center items-center gap-5'>
-                                    <div className='w-full h-auto flex justify-between items-center font-theSeasons2 text-sm'>
-                                        <span className='w-full h-auto flex justify-center items-center gap-2'><AiOutlineClockCircle className='text-[26px] text-[#cdbebf]'/><p>{item.czas}</p></span>
-                                        <span className='w-full h-auto flex justify-center items-center gap-2'><AiOutlineTag className='text-[26px] text-[#cdbebf] font-extralight'/><p>{item.cena}</p></span>
+                            <SwiperSlide key={item.tytul} className='!flex !rounded-md !bg-[#fff] !p-7 !cursor-pointer group' onClick={() => getSlide(item, index)}>
+                                <motion.div /*variants={swiperItem} initial='hidden' whileInView='show' transition={{ duration: 0.3, delay: index * 0.1 }} viewport={{ once: true, amount: 0.5 }} */ className='!flex !justify-between !items-center !flex-col !text-center !gap-2 !w-full'>
+                                    <h3 className='font-theSeasons2 lg:text-xl sm:text-lg text-base tracking-widest uppercase font-bold'>{item.tytul}</h3>
+                                    <div className='w-full h-auto flex flex-col justify-center items-center gap-5'>
+                                        <div className='w-full h-auto flex justify-between items-center font-theSeasons2 text-sm'>
+                                            <span className='w-full h-auto flex justify-center items-center gap-2'><AiOutlineClockCircle className='text-[26px] text-[#cdbebf]'/><p>{item.czas}</p></span>
+                                            <span className='w-full h-auto flex justify-center items-center gap-2'><AiOutlineTag className='text-[26px] text-[#cdbebf] font-extralight'/><p>{item.cena}</p></span>
+                                        </div>
+                                        <button className='uppercase tracking-widest bg-[#cdbebf] text-[#fff] group-hover:scale-105 duration-200 sm:text-base text-base px-5 py-1 font-medium cursor-pointer font-klein'>więcej</button>
                                     </div>
-                                    <button className='uppercase tracking-widest bg-[#cdbebf] text-[#fff] group-hover:scale-105 duration-200 sm:text-base text-base px-5 py-1 font-medium cursor-pointer font-klein'>więcej</button>
-                        </div>*/}
-                                {/*</motion.div>*/}
+                                </motion.div>
                             </SwiperSlide>
                         ))}
                         </Swiper>
