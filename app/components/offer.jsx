@@ -127,7 +127,7 @@ export default function Offer() {
         </section>
         <AnimatePresence initial={false} mode='wait' onExitComplete={() => null}>
         {clickedSlide && isModalOpen &&
-            <Modal closeModal={() => setIsModalOpen(false)} props={clickedSlide}/>
+            <Modal closeModal={() => setIsModalOpen(false)} props={clickedSlide} mobileCheck={isMobile}/>
         }
         </AnimatePresence>
     </>
