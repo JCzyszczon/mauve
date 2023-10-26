@@ -16,6 +16,7 @@ export default function Offer() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [offerDane, setOfferDane] = useState();
     const [space, setSpace] = useState(30);
+    const [isMobile, setIsMobile] = useState(false);
 
     const getSlide = (item, index) => {
         setCurrentIndex(index);
@@ -70,6 +71,19 @@ export default function Offer() {
           document.body.style.overflow = "auto";
         };
     }, [isModalOpen]);
+
+    useEffect(() => {
+        function handleResize() {
+          if (window.innerWidth <= 1024) {
+            setIsMobile(true);
+          } else {
+            setIsMobile(false);
+          }
+        }
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
       
     const swiperItem = {
       hidden: { opacity: 0, x: -10 },
@@ -87,7 +101,7 @@ export default function Offer() {
                         <Swiper slidesPerView={elements} spaceBetween={space} className='!py-10 !px-0 !overflow-hidden'>
                         {offerDane.map((item, index) => (
                             <SwiperSlide key={item.tytul} className='!flex !rounded-md !bg-[#fff] lg:drop-shadow-lg drop-shadow-none !p-7 !cursor-pointer group' onClick={() => getSlide(item, index)}>
-                                <motion.div variants={swiperItem} initial='hidden' whileInView='show' transition={{ duration: 0.3, delay: index * 0.1 }} viewport={{ once: true, amount: 0.5 }} className='!flex !justify-between !items-center !flex-col !text-center !gap-2 !w-full'>
+                                <motion.div variants={swiperItem} initial='hidden' whileInView='show' transition={!isMobile ? { duration: 0.3, delay: index * 0.1 } : {duration: 0.3, delay: 0.1}} viewport={{ once: true, amount: 0.5 }} className='!flex !justify-between !items-center !flex-col !text-center !gap-2 !w-full'>
                                     <h3 className='font-theSeasons2 lg:text-xl sm:text-lg text-base tracking-widest uppercase font-bold'>{item.tytul}</h3>
                                     <div className='w-full h-auto flex flex-col justify-center items-center gap-5'>
                                         <div className='w-full h-auto flex justify-between items-center font-theSeasons2 text-sm'>
