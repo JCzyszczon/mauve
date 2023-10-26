@@ -7,7 +7,7 @@ const FacebookMsg = () => {
     const page_id = process.env.NEXT_PUBLIC_PAGE_ID;
 
     return (
-        <FacebookProvider appId={app_id} language='pl_PL' chatSupport>
+        <FacebookProvider appId={app_id} language='pl_PL' lazy={true} chatSupport>
           <CustomChat pageId={page_id} themeColor='#cdbebf' minimized={false}/>
         </FacebookProvider>    
     );
