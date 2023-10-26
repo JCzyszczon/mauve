@@ -112,7 +112,7 @@ export default function News() {
   }
 
   return (
-    <section className='w-full 2xl:min-h-[480px] min-h-fit 2xl:max-h-[480px] max-h-none flex sm:flex-row flex-col relative mb-16'>
+    <section className='w-full 2xl:min-h-[480px] min-h-fit 2xl:max-h-[480px] max-h-none flex sm:flex-row flex-col relative mb-16 lg:drop-shadow-md drop-shadow-none'>
       <Image src={sharedImage} alt="Background Image" fill={true} quality={100} className="bg-no-repeat bg-cover z-[-1]"/>
       {offerDane ? (
         <Swiper spaceBetween={10} loop={true} pagination={{clickable: true,}} modules={[Autoplay,Pagination]} autoplay={{delay: 15000, disableOnInteraction: false,}} className='w-full'>

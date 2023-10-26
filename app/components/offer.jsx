@@ -78,7 +78,7 @@ export default function Offer() {
 
     return (
     <>
-        <section id='offer' className='w-full 2xl:min-h-[480px] min-h-fit 2xl:max-h-[480px] max-h-none flex sm:flex-row flex-col relative mb-16'>
+        <section id='offer' className='w-full 2xl:min-h-[480px] min-h-fit 2xl:max-h-[480px] max-h-none flex sm:flex-row flex-col relative mb-16 lg:drop-shadow-md drop-shadow-none'>
             <Image src={sharedImage} alt="Background Image" fill={true} quality={100} className="bg-no-repeat bg-cover z-[-1]"/>
             {offerDane ? (
                 <section className='w-full flex flex-col justify-center items-center'>
@@ -86,8 +86,8 @@ export default function Offer() {
                     <section className='w-full flex sm:px-[5%] px-[5%]'>
                         <Swiper slidesPerView={elements} spaceBetween={space} className='!py-10 !px-0 !overflow-hidden'>
                         {offerDane.map((item, index) => (
-                            <SwiperSlide key={item.tytul} className='!flex !rounded-md !bg-[#fff] !p-7 !cursor-pointer group' onClick={() => getSlide(item, index)}>
-                                <motion.div /*variants={swiperItem} initial='hidden' whileInView='show' transition={{ duration: 0.3, delay: index * 0.1 }} viewport={{ once: true, amount: 0.5 }} */ className='!flex !justify-between !items-center !flex-col !text-center !gap-2 !w-full'>
+                            <SwiperSlide key={item.tytul} className='!flex !rounded-md !bg-[#fff] lg:drop-shadow-lg drop-shadow-none !p-7 !cursor-pointer group' onClick={() => getSlide(item, index)}>
+                                <motion.div variants={swiperItem} initial='hidden' whileInView='show' transition={{ duration: 0.3, delay: index * 0.1 }} viewport={{ once: true, amount: 0.5 }} className='!flex !justify-between !items-center !flex-col !text-center !gap-2 !w-full'>
                                     <h3 className='font-theSeasons2 lg:text-xl sm:text-lg text-base tracking-widest uppercase font-bold'>{item.tytul}</h3>
                                     <div className='w-full h-auto flex flex-col justify-center items-center gap-5'>
                                         <div className='w-full h-auto flex justify-between items-center font-theSeasons2 text-sm'>

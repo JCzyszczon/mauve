@@ -84,7 +84,7 @@ export default function About() {
   }
 
   return (
-    <section id='about' className='w-full 2xl:min-h-[480px] min-h-fit 2xl:max-h-[480px] max-h-none flex sm:flex-row flex-col relative mb-16 xl:px-[10%] px-0'>
+    <section id='about' className='w-full 2xl:min-h-[480px] min-h-fit 2xl:max-h-[480px] max-h-none flex sm:flex-row flex-col relative mb-16 xl:px-[10%] px-0 lg:drop-shadow-md drop-shadow-none'>
       <Image src={sharedImage} alt="Background Image" fill={true} quality={100} className="bg-no-repeat bg-cover z-[-1]"/>
       {aboutDane ? (
       <section className="w-full flex sm:flex-row flex-col gap-0">

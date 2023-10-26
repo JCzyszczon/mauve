@@ -87,7 +87,7 @@ export default function Navbar() {
   }
 
   return (
-    <header className='w-full 2xl:min-h-[480px] min-h-fit 2xl:max-h-[480px] max-h-none flex sm:flex-row flex-col relative'>
+    <header className='w-full 2xl:min-h-[480px] min-h-fit 2xl:max-h-[480px] max-h-none flex sm:flex-row flex-col relative lg:drop-shadow-md drop-shadow-none'>
       <Image src={sharedImage} alt="Background Image" fill={true} quality={100} className="bg-no-repeat bg-cover z-[-1]"/>
       <section className="w-full flex sm:flex-row flex-col-reverse sm:gap-0 gap-5">
         <motion.section variants={cardVariants} initial='offscreen' whileInView='onscreen' viewport={{ once: true, amount: 0.5 }} className='sm:w-1/2 w-full flex justify-center items-center'>
