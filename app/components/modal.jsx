@@ -14,6 +14,7 @@ import PhotoModal from './photoModal';
 import { motion, AnimatePresence } from 'framer-motion';
 import AnimatedText2 from './animatedText2';
 import supabase from '../config/supabaseClient.js';
+import { useRouter } from 'next/navigation';
 
 
 const supabaseImport = (image) => {
@@ -28,6 +29,8 @@ function Modal({ closeModal, props, mobileCheck }) {
 
   const sectionRef = useRef(null);
   const sectionRef2 = useRef(null);
+
+  const router = useRouter();
 
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [clickedSlide, setClickedSlide] = useState();
@@ -141,12 +144,14 @@ function Modal({ closeModal, props, mobileCheck }) {
     if (modalRef.current && !modalRef.current.contains(event.target)) {
       setLayoutOpen(false);
       closeModal();
+      router.push(`/`, { scroll: false })
     }
   };
 
   const handleClose = () => {
     setLayoutOpen(false);
     closeModal();
+    router.push(`/`, { scroll: false })
   }
 
   const getSlide = (item, id, index, basic) => {

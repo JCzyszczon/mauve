@@ -5,9 +5,11 @@ import 'swiper/css';
 import {AiOutlineTag, AiOutlineClockCircle} from 'react-icons/ai';
 import React, { useState, useEffect } from "react";
 import Modal from './modal.jsx';
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, scroll, useScroll } from "framer-motion";
 import sharedImage from './sharedImage.jsx';
 import supabase from '../config/supabaseClient.js';
+import { useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 
 export default function Offer() {
     const [elements, setElements] = useState(4.2);
@@ -18,13 +20,21 @@ export default function Offer() {
     const [space, setSpace] = useState(30);
     const [isMobile, setIsMobile] = useState(false);
 
+    const router = useRouter();
+    const searchParams = useSearchParams();
+
     const getSlide = (item, index) => {
         setCurrentIndex(index);
         setClickedSlide(item);
         setIsModalOpen(true);
+
+        const offerSlug = item.id;
+        router.push(`/?oferta=${offerSlug}`, { scroll: false })
     }
 
     useEffect(() => {
+        const offerSlug = searchParams.get('oferta');
+
         const fetchData = async () => {
           const { data, error } = await supabase
           .from('oferta')
@@ -36,6 +46,21 @@ export default function Offer() {
           }
           if(data) {
             setOfferDane(data);
+
+            if(offerSlug) {
+                const result = data.find(({ id }) => id == offerSlug);
+                if (result) {
+                    setClickedSlide(result);
+                    setIsModalOpen(true);
+                    const targetElement = document.getElementById('offer');
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start',
+                        });
+                    }
+                }
+            }
           }
         }
     
