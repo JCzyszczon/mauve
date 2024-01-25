@@ -4,6 +4,7 @@ import CookieConsent from './components/cookies';
 import AuthProvider from './context/authProvider';
 import LogOutButton from './components/logOutButton';
 import { Analytics } from '@vercel/analytics/react';
+import NextTopLoader from 'nextjs-toploader';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -48,6 +49,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pl">
       <body className={inter.className}>
+        <NextTopLoader color='#705555'/>
         <AuthProvider>
           <LogOutButton/>
           {children}
