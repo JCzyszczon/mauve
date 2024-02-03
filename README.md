@@ -102,7 +102,7 @@ In addition to presenting the company's offer in a stylish and simple design, th
 ### Links
 
 -   [Live Page][live-page]
--   [Fallaback Page][fallback-page]
+-   [Fallback Page][fallback-page]
 
 ## My Process
 
